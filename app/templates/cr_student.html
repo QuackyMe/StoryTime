@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Students: </h1>
+        <ul>
+            {% for student in students %}
+            <li>{{student.name}}</li><br>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <h1>Announcements: </h1>
+        <ul>
+            {% for announcement in announcements %}
+            <li><h3>{{announcement.title}}</h3>
+                <h1>{{announcement.message}}</h1>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

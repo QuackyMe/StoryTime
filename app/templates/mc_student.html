@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Manage Course - Student</title>
+	<link rel="stylesheet" type="text/css" href=" ../static/styles/mcstudent.css">
+	<link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
+<body>
+	<div class="navtab">
+	<font color=white>
+		<h1>S</h1>
+		<h2>T</h2>
+		<a href="main.html">
+		<img src="house.png" class="house" name="home"></a>
+		<a href="#">
+		<img src="hat.png" class="hat" name="courses"></a>
+		<a href="#">
+		<img src="person.jpg" class="person" name="profile"></a>
+		<a href="#">
+		<img src="mail.png" class="mail" name="mail"></a>
+		<a href="#">
+		<img src="setting.png" class="settings" name="settings"></a>
+		<a href="#">
+		<img src="logout.png" class="logout" name="logout"></a>
+	</div>
+	<div class="header">
+		<font color="black">
+		<h1>Courses</h1>
+	</div>
+	<div class="label1">
+		<h2>Active Courses</h2>
+	</div>
+	<div class="label2">
+		<h2>Join Course</h2>
+	</div>
+	{% for course in courses %}
+	<div class="act1">
+		<img src="eng.jpeg" class="eng" name="eng">
+		<a href="course/{{course.code}}"><h4>{{course.name}}</h4></a>
+		<h5>Adviser: {{ course.host }} </h5>
+		<input type="submit" name="submit" value="View course">
+	</div>
+	{% endfor %}
+
+    <form action="/course/join" method="POST">
+        <input type="text" name="join_code" placeholder="Course Code">
+        <input type="submit" value="Join">
+	</form>
+	
+	<h1>Join Couse</h1>
+    <form action="/course/join/submit" method="POST">
+        <input type="text" name="join_code" placeholder="Course Code">
+        <input type="submit" value="Join">
+    </form>
+
+    {% if message %}
+        <p class="error">{{ message | safe }}</p>
+    {% endif %}
+</body>
+</html>

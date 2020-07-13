@@ -1,0 +1,60 @@
+<html>
+
+<head>
+	<title>Manage Course - Teacher</title>
+	<link rel="stylesheet" type="text/css" href="../static/styles/mcteacher.css">
+	<link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
+
+<body>
+	<div class="navtab">
+		<font color=white>
+			<h1>S</h1>
+			<h2>T</h2>
+			<a href="main.html">
+				<img src="house.png" class="house" name="home"></a>
+			<a href="#">
+				<img src="hat.png" class="hat" name="courses"></a>
+			<a href="#">
+				<img src="person.jpg" class="person" name="profile"></a>
+			<a href="#">
+				<img src="mail.png" class="mail" name="mail"></a>
+			<a href="#">
+				<img src="setting.png" class="settings" name="settings"></a>
+			<a href="index.html">
+				<img src="logout.png" class="logout" name="logout"></a>
+	</div>
+	<div class="header">
+		<font color="black">
+			<h1>Courses</h1>
+	</div>
+	<div class="label1">
+		<h2>Created Courses</h2>
+	</div>
+	{% for course in courses %}
+	<div class="act1">
+		<img src="eng.jpeg" class="eng" name="eng">
+		<a href="course/{{course.code}}"><h4>{{course.name}}</h4></a>
+		<input type="submit" name="submit" value="View course">
+	</div>
+	{% endfor %}
+	<div class="act2">
+		<form action="/course/create/submit" method="POST">
+			<input type="text" name="course_name" placeholder="Course Name"> <br>
+			<input type="submit" value="Add Course">
+		</form>
+	</div>
+
+	<script>
+		var closebtns = document.getElementsByClassName("close");
+		var i;
+
+		for (i = 0; i < closebtns.length; i++) {
+			closebtns[i].addEventListener("click", function () {
+				this.parentElement.style.display = 'none';
+			});
+		}
+	</script>
+
+</body>
+
+</html>

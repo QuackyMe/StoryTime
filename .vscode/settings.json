@@ -1,0 +1,27 @@
+{
+    "python.linting.pylintArgs": [
+        "--load-plugins",
+        "pylint-flask"
+    ],
+
+    "python.linting.flake8Args": [
+        "--max-line-length=120",
+        "--ignore=E501,E402,F401",
+    ],
+
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "python.pythonPath": "C:\\Users\\jeric\\.virtualenvs\\StoryTime-LdteVbjb",
+    "python.linting.pylamaEnabled": false,
+    "files.associations": {
+
+    
+    },
+    "python.linting.banditEnabled": false,
+    "python.linting.mypyEnabled": false,
+    "python.linting.prospectorEnabled": false,
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.pydocstyleEnabled": false,
+    
+}

@@ -1,0 +1,77 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: white;
+	background-size: cover;
+	background-position: center;
+}
+
+h1{
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+	font-family: Baloo Bhai;
+	font-size: 70px;
+}
+
+h2{
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+	font-family: Baloo Bhai;
+	font-size: 30px;
+}
+
+.loginbox{
+	width: 320px;
+	height: 400px;
+	background: #D3D3D3;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	padding: 30px 30px;
+	font-family: Baloo Bhai;
+	border-radius: 25px;
+}
+
+.loginbox p{
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+
+.error {
+	color: red;
+}
+
+.loginbox input{
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.loginbox input[type="text"], input[type="password"]
+{
+	border-radius: 25px;
+	border-bottom: 1px solid #fff;
+	outline: none;
+	height: 25px;
+}
+
+.loginbox input[type="submit"]
+{
+	margin-left: 155px;
+	border-radius: 25px;
+	outline: none;
+	width: 100px;
+	height: 35px;
+	background-color: black;
+	color: white;
+	font-size: 12px;
+}
+
+.loginbox input[type="submit"]:hover
+{
+	cursor: pointer;
+}

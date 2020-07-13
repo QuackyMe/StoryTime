@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Register</title>
+	<link rel="stylesheet" type="text/css" href="../static/styles/register.css">
+	<link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
+<body>
+	<h1>Story Time</h1>
+	<h2>Learn the tales</h2>
+	<div class="loginbox">
+
+		<h2>Register</h2>
+
+		<!--Register Form-->
+		<form method="POST" action="/register/submit">
+			<p>Username</p>
+			<input type="text" name="username" placeholder="Enter Username">
+			<p>Password</p>
+			<input type="password" name="password" placeholder="Enter Password">
+			<p>Confirm Password</p>
+			<input type="password" name="conf_password" placeholder="Confirm Password">
+			<p>Account type</p>
+			<select name="acct_type" id="account">
+			<option value=" ">Choose your account type</option>
+			<option value="student">Student</option>
+			<option value="teacher">Teacher</option>
+			</select><br><br>
+
+			<a href="main.html">
+			<input type="submit" name="" value="Register"><br></a>
+		</form>
+
+		<a href="/login">Have an account?</a> <br>
+
+		<!--Error Message-->
+		{% if error %}
+		<p class="error">Error: {{ error | safe }}</p>
+		<br>
+		{% endif %}
+
+		<!--Message-->
+		{% if message %}
+		<p class="message">{{ message | safe }}</p>
+		<br>
+		{% endif %}
+		
+	</div>
+	
+</body>
+</head>
+</html>

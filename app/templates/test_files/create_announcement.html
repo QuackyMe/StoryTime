@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/course/{{ course_code | safe }}/submit" method="POST">
+        <p>Title: </p>
+        <input type="text" name="title">
+        <p>Details: </p>
+        <input type="text" name="content">
+        <input type="submit" value="Post Announcement">
+    </form>
+
+    {% if message %}
+        <p class="error">{{ message | safe }}</p>
+    {% endif %}
+</body>
+</html>

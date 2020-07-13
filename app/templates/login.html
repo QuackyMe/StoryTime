@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="../static/styles/login.css">
+	<link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
+<body>
+	<h1>Story Time</h1>
+	<h2>Learn the tales</h2>	
+
+	<div class="loginbox">
+		<h2>Login</h2>
+
+		<!--Login Form-->
+		<form method="POST" action="/login/submit">
+			<p>Username</p>
+			<input type="text" name="username" placeholder="Enter Username">
+			<p>Password</p>
+			<input type="password" name="password" placeholder="Enter Password">
+			<input type="submit" name="" value="Login"><br>
+		</form>		
+
+		<a href="/register">New here?</a> <br> <br>
+
+		<!--Error Message-->
+		{% if error %}
+		<p class="error">Error: {{ error | safe }}</p>
+		<br>
+		{% endif %}
+
+		<!--Message-->
+		{% if message %}
+		<p class="message">{{ message | safe }}</p>
+		<br>
+		{% endif %}
+
+	</div>
+	
+</body>
+</head>
+</html>
+
+
