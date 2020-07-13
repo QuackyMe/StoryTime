@@ -2,7 +2,7 @@ from app import app, db
 from flask import request, render_template, redirect, session, url_for
 from .models import Account, Course, Member, Announcement
 from .controller.randomGenerator import generate_alphanumeric
-from .model_controller import student_courses
+from .model_controller import student_courses, class_members, get_course_id, add_announcement
 
 
 # Default Route
@@ -130,23 +130,25 @@ def add_member():
         return render_template('mc_student_test.html', message='Sucessfully Joined Course')
 
 
+# Course Room Page
+@app.route('/course/code=<course_code>/')
+def course_room(course_code):
+    print(course_code)
+    students = class_members(course_code)
+    announcements = Announcement.query.filter_by(room_id=get_course_id(course_code)).all()
+    return render_template('cr_student.html', students=students, announcements=announcements)
+
+
 # Create Announcement Page
 @app.route('/course/code=<course_code>/announcement')
 def announcement(course_code):
-    return render_template('mc_student_test.html', course_code=course_code)
+    return render_template('create_announcement.html', course_code=course_code)
 
 
 # Create Announcement Handler
 @app.route('/course/code=<course_code>/announcement/create', methods=['POST'])
 def create_announcement(course_code):
-    print("COURSE CODE: " + str(course_code))
-    course = Course.query.filter_by(code=course_code).first()
-    title = request.form['title']
-    content = request.form['content']
-
-    data = Announcement(course.id, title, content)
-    db.session.add(data)
-    db.session.commit()
+    add_announcement(course_code)
     return render_template('create_announcement.html', message='Success')
 
 

@@ -1,5 +1,5 @@
 from app import db
-from .models import Account
+from .models import Account, Course
 
 
 class CourseModel():
@@ -9,20 +9,49 @@ class CourseModel():
         self.host = host
 
 
-def student_courses(student_id):
-    sql = f"""SELECT c.code, c.name, c.host
-        FROM public."Course" AS "c"
-        INNER JOIN public."Member" AS "m"
-            ON c.id=m.course_id
-        WHERE m.member_id = {student_id}"""
-    query = db.engine.execute(sql)
-    courses = [CourseModel(course[0], course[1], get_name(course[2])) for course in query]
-    return courses
+class MemberName():
+    def __init__(self, name):
+        self.name = name
 
 
 def get_name(account_id):
-    name = Account.query.filter_by(id=account_id).first().username
-    return name
+    return Account.query.filter_by(id=account_id).first().username
+
+
+def get_course_id(course_code):
+    return Course.query.filter_by(code=course_code).first().id
+
+
+def student_courses(student_id):
+    sql = f"""SELECT c.code, c.name, c.host
+        FROM public."Course" AS "c"
+        INNER JOIN public."Member" AS "m" ON c.id=m.course_id
+        WHERE m.member_id = {student_id}"""
+    query = db.engine.execute(sql)
+    courses = [CourseModel(course[0], course[1], get_name(course[2]))
+               for course in query]
+    return courses
+
+
+def class_members(course_code):
+    sql = f"""SELECT ac.username
+    FROM "Account" "ac"
+    INNER JOIN "Member" AS "m" ON m.member_id = ac.id
+    WHERE m.course_id = {get_course_id(course_code)};"""
+    query = db.engine.execute(sql)
+    students = [MemberName(student[0]) for student in query]
+    return students
+
+
+def add_announcement(course_code):
+    print("COURSE CODE: " + str(course_code))
+    course = Course.query.filter_by(code=course_code).first()
+    title = request.form['title']
+    content = request.form['content']
+
+    data = Announcement(course.id, title, content)
+    db.session.add(data)
+    db.session.commit()
+
 
 # def login_validation():
-
