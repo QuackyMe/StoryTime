@@ -1,5 +1,6 @@
 from app import db
-from .models import Account, Course
+from .models import Account, Course, Announcement
+from flask import request
 
 
 class CourseModel():
