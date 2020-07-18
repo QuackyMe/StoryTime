@@ -1,30 +1,43 @@
-var choiceButton = document.getElementById('btn_choice');
-var choiceSection = document.getElementById('choices');
 var questionButton = document.getElementById('btn_question');
 var questionSection = document.getElementById('questions');
 var firstQuestion = document.getElementById('firstQuestion');
 
 var counter = 0;
 
-choiceButton.addEventListener('click', addChoice);
+questionSection.addEventListener('click', addChoice);
 questionButton.addEventListener('click', addQuestion);
 
-function addChoice(){
+function addChoice(e){
+    if(e.target.id === 'btn_choice')
     var newLabel = document.createElement('h3');
     newLabel.appendChild(document.createTextNode('Choice: '));
 
     var newInput = document.createElement('input');
     newInput.name = 'choice[]';
 
-    choiceSection.appendChild(newLabel);
-    choiceSection.appendChild(newInput);
-
+    //choiceSection.appendChild(newLabel);
+    //choiceSection.appendChild(newInput);
+    
+ //   e.target.parentElement.insertBefore(newLabel, e.target);
+ //   e.target.parentElement.insertBefore(newInput, e.target);
+    e.target.parentElement.insertBefore(newInput, e.target);
+    e.target.parentElement.insertBefore(newInput, e.target);
 }
 
-function addQuestion(){
+function addQuestion(e){
+    if(e.target.id === 'btn_question'){
     var clone = firstQuestion.cloneNode(true);
-    questionSection.after(clone);
-}
+    console.log(clone.childNodes)
+    for(var i=0; i<clone.childNodes.length; i++){
+        console.log(children[0].children[0])
+        clone.children.children[0].value = "";
+    }    
+//     clone.childNodes.forEach(element => {
+//         element.value = "";
+//    //     if(element.tagName != "SELECT")
+    //questionSection.after(clone);
+    questionSection.insertBefore(clone, questionButton);
+}}
 
 
 

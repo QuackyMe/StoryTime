@@ -8,24 +8,25 @@
 
 <body>
     <h1>Add Activity</h1>
-    <div id='questions'>
-        <div id="firstQuestion">
-        <form action="/activity/submit">
-            <h2>Question 1: </h2> <input type="text" name="question[]">
-            <h2>Type </h2> <select name="type" id="q_type">
-                <option value="speech-to-text">Multiple Choice</option>
-                <option value="speech-to-text">Speech-to-Text</option>
-            </select>
-            <h2>Correct Answer </h2> <input type="text" name="answer[]" id="q_answer">
-            <div id="choices">
-                <h4>Option A </h4> <input type="text" name="choice[]" id="q_choice">
-                <button type="button" id="btn_choice">Add Choice</button>
-                <br>
+    <form action="/activity/submit">
+        <div id='questions'>
+            <div id="firstQuestion">
+                <h2>Question 1: <input id='test' type="text" name="question[]"> </h2>
+                <h2>Type <select name="type" id="q_type">
+                        <option value="speech-to-text">Multiple Choice</option>
+                        <option value="speech-to-text">Speech-to-Text</option>
+                    </select>
+                </h2>
+                <h2>Correct Answer <input type="text" name="answer[]" id="q_answer"></h2>
+                <h3>Choice: <input type="text" name="choice[]" id="q_choice">
+                    <div id="new_section"></div>
+                    <button type="button" id="btn_choice">Add Choice</button>
+                </h3>
             </div>
+            <br>
             <button type="button" id="btn_question">Add Question</button> <br>
-            <input type="submit" value="Submit">
-            </div>
-    </div>
+        </div>
+        <input type="submit" value="Submit">
     </form>
 
     <script src="../static/scripts/add_question.js"></script>
