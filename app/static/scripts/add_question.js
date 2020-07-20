@@ -7,37 +7,31 @@ var counter = 0;
 questionSection.addEventListener('click', addChoice);
 questionButton.addEventListener('click', addQuestion);
 
-function addChoice(e){
-    if(e.target.id === 'btn_choice')
-    var newLabel = document.createElement('h3');
-    newLabel.appendChild(document.createTextNode('Choice: '));
+function addChoice(e) {
+    if (e.target.id === 'btn_choice') {
+        var newLabel = document.createElement('h4');
+        newLabel.appendChild(document.createTextNode('Choice: '));
 
-    var newInput = document.createElement('input');
-    newInput.name = 'choice[]';
+        var newInput = document.createElement('input');
+        newInput.name = 'choice[]';
 
-    //choiceSection.appendChild(newLabel);
-    //choiceSection.appendChild(newInput);
-    
- //   e.target.parentElement.insertBefore(newLabel, e.target);
- //   e.target.parentElement.insertBefore(newInput, e.target);
-    e.target.parentElement.insertBefore(newInput, e.target);
-    e.target.parentElement.insertBefore(newInput, e.target);
+        newLabel.appendChild(newInput)
+        e.target.parentElement.insertBefore(newLabel, e.target);
+    }
 }
 
-function addQuestion(e){
-    if(e.target.id === 'btn_question'){
-    var clone = firstQuestion.cloneNode(true);
-    console.log(clone.childNodes)
-    for(var i=0; i<clone.childNodes.length; i++){
-        console.log(children[0].children[0])
-        clone.children.children[0].value = "";
-    }    
-//     clone.childNodes.forEach(element => {
-//         element.value = "";
-//    //     if(element.tagName != "SELECT")
-    //questionSection.after(clone);
-    questionSection.insertBefore(clone, questionButton);
-}}
+function addQuestion(e) {
+    if (e.target.id === 'btn_question') {
+        var clone = firstQuestion.cloneNode(true);
+        for (var i = 0; i < clone.children.length; i++) {
+            for (var j = 0; j < clone.children[i].children.length; j++) {
+                if (clone.children[i].children[j].tagName != 'SELECT')
+                    clone.children[i].children[j].value = "";
+            }
+        }
+        questionSection.insertBefore(clone, questionButton);
+    }
+}
 
 
 
