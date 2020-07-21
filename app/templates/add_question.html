@@ -8,10 +8,10 @@
 
 <body>
     <h1>Add Activity</h1>
-    <form action="/activity/submit">
+    <form action="/activity/submit" method="POST" id="activity_form">
         <div id='questions'>
-            <div id="firstQuestion">
-                <h2>Question 1: <input id='test' type="text" name="question[]"> </h2>
+            <div id="Q1">
+                <h2 id="q_number">Question 1: </h2> <input type="text" name="question[]">
                 <h2>Type <select name="type" id="q_type">
                         <option value="speech-to-text">Multiple Choice</option>
                         <option value="speech-to-text">Speech-to-Text</option>

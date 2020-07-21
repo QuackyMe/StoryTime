@@ -1,11 +1,13 @@
 var questionButton = document.getElementById('btn_question');
 var questionSection = document.getElementById('questions');
-var firstQuestion = document.getElementById('firstQuestion');
+var q1 = document.getElementById('Q1');
+var form = document.querySelector('form');
 
-var counter = 0;
-
+form.addEventListener('submit', submit);
 questionSection.addEventListener('click', addChoice);
 questionButton.addEventListener('click', addQuestion);
+
+var counter = 1;
 
 function addChoice(e) {
     if (e.target.id === 'btn_choice') {
@@ -22,15 +24,22 @@ function addChoice(e) {
 
 function addQuestion(e) {
     if (e.target.id === 'btn_question') {
-        var clone = firstQuestion.cloneNode(true);
-        for (var i = 0; i < clone.children.length; i++) {
-            for (var j = 0; j < clone.children[i].children.length; j++) {
-                if (clone.children[i].children[j].tagName != 'SELECT')
-                    clone.children[i].children[j].value = "";
-            }
+        counter++;
+
+        var clone = q1.cloneNode(true);
+        clone.id = 'Q' + counter;
+        clone.getElementsByTagName('h2')[0].textContent = 'Question ' + counter + ":";
+
+        input = clone.getElementsByTagName('input');
+        for (var i = 0; i < input.length; i++) {
+            input[i].value = null;
         }
         questionSection.insertBefore(clone, questionButton);
     }
+}
+
+function submit(e) {
+    input = document.getElementsByName
 }
 
 
