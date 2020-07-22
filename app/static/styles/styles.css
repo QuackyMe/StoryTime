@@ -1,0 +1,753 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: white;
+	background-size: cover;
+	background-position: center;
+}
+
+h1{
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+	font-family: Baloo Bhai;
+	font-size: 70px;
+}
+
+h2{
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+	font-family: Baloo Bhai;
+	font-size: 30px;
+}
+
+select, option
+{
+	width: 260px;
+}
+
+.navtab{
+	position: absolute;
+	width: 132px;
+	height: 800px;
+	left: 300px;
+	top: 50px;
+	background-color: black;
+	color: #fff;
+	box-sizing: border-box;
+	padding: 30px 50px;
+	font-family: Baloo Bhai;
+	border-radius: 25px;
+}
+
+.navtab h1
+{
+	position: absolute;
+	width: 36px;
+	height: 102px;
+	left: 40px;
+	top: 25px;
+
+	font-family: Baloo Bhai;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 64px;
+	line-height: 102px;
+}	
+
+.navtab h2
+{
+	position: absolute;
+	width: 27px;
+	height: 77px;
+	left: 70px;
+	top: 60px;
+
+	font-family: Baloo Bhai;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 48px;
+	line-height: 77px;
+	color: #FFFFFF;
+}
+
+.house
+{
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	left: 50px;
+	top: 230px;
+}
+
+.hat
+{
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	left: 50px;
+	top: 320px;
+	
+}
+
+.person
+{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	left: 42px;
+	top: 390px;
+}
+
+.hood
+{
+	position: absolute;
+	width: 75px;
+	height: 75px;
+	left: 10px;
+	top: 8px;
+	border-radius: 15px;
+}
+
+.mail
+{
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	left: 48px;
+	top: 480px;
+}
+
+.settings
+{
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	left: 47px;
+	top: 570px;
+}
+
+.logout
+{
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: 52px;
+	top: 730px;
+}
+
+.stud1{
+	position: absolute;
+	width: 440px;
+	height: 90px;
+	left: 530px;
+	top: 300px;
+	background-color: #F5F5F7;
+	border-radius: 25px;
+}
+
+.james
+{
+	position: absolute;
+	width: 75px;
+	height: 75px;
+	left: 10px;
+	top: 8px;
+	border-radius: 15px;
+}
+
+.stud1 h4
+{
+	position: absolute;
+	left: 90px;
+	font-family: Baloo Bhai;
+}
+
+.stud2
+{
+	position: absolute;
+	width: 440px;
+	height: 90px;
+	left: 530px;
+	top: 400px;
+	background-color: #F5F5F7;
+	border-radius: 25px;
+}
+
+.carlo
+{
+	position: absolute;
+	width: 75px;
+	height: 75px;
+	left: 10px;
+	top: 8px;
+	border-radius: 15px;
+}
+
+.stud2 h4
+{
+	position: absolute;
+	left: 90px;
+	font-family: Baloo Bhai;
+}
+
+.stud3
+{
+	position: absolute;
+	width: 440px;
+	height: 90px;
+	left: 530px;
+	top: 500px;
+	background-color: #F5F5F7;
+	border-radius: 25px;
+}
+
+.kyle
+{
+	position: absolute;
+	width: 75px;
+	height: 75px;
+	left: 10px;
+	top: 8px;
+	border-radius: 15px;
+}
+
+.stud3 h4
+{
+	position: absolute;
+	left: 90px;
+	font-family: Baloo Bhai;
+}
+
+.header
+{
+	position: absolute;
+	width: 1120px;
+	height: 160px;
+	left: 500px;
+	top: 75px;
+	background-color: #F5F5F7;
+	color: #fff;
+	box-sizing: border-box;
+	padding: 30px 50px;
+	font-family: Baloo Bhai;
+	border-radius: 25px;
+}
+
+.header h1
+{
+	position: absolute;
+}
+
+.header h2
+{
+	position: absolute;
+	top: 60px;
+}
+
+.label1 h2
+{
+	position: absolute;
+	left: 530px;
+	top: 270px;
+	font-family: Baloo Bhai;
+}
+
+.label2 h2
+{
+	position: absolute;
+	left: 1150px;
+	top: 270px;
+	font-family: Baloo Bhai;
+}
+
+.label3 h2
+{
+	position: absolute;
+	left: 1010px;
+	top: 285px;
+	font-family: Baloo Bhai;
+}
+
+.label4 h2
+{
+	position: absolute;
+	left: 530px;
+	top: 600px;
+	font-family: Baloo Bhai;
+}
+
+.label5 h2
+{
+	position: absolute;
+	left: 1010px;
+	top: 440px;
+	font-family: Baloo Bhai;
+}
+
+.label6 h2
+{
+	position: absolute;
+	left: 1010px;
+	top: 600px;
+	font-family: Baloo Bhai;
+}
+
+.eng
+{
+	position: absolute;
+	width: 75px;
+	height: 75px;
+	left: 10px;
+	top: 8px;
+	border-radius: 15px;
+}
+
+.lamb
+{
+	position: absolute;
+	width: 75px;
+	height: 75px;
+	left: 10px;
+	top: 8px;
+	border-radius: 15px;
+}
+
+.pigs
+{
+	position: absolute;
+	width: 75px;
+	height: 75px;
+	left: 10px;
+	top: 8px;
+	border-radius: 15px;
+}
+
+.act1
+{
+	position: absolute;
+	width: 550px;
+	height: 90px;
+	left: 530px;
+	top: 340px;
+	background-color: #F5F5F7;
+	border-radius: 25px;
+}
+
+.act1 h4
+{
+	position: absolute;
+	left: 90px;
+	font-family: Baloo Bhai;
+}
+
+.act1 h5
+{
+	position: absolute;
+	left: 90px;
+	top: 25px;
+}
+
+.act1 h6
+{
+	position: absolute;
+	left: 390px;
+	top: 50px;
+}
+
+.act1 input[type="submit"]
+{
+	position: absolute;
+	border-radius: 15px;
+	width: 100px;
+	height: 50px;
+	left: 430px;
+	top: 20px;
+	background-color: black;
+	color: white;
+	font-size: 12px;
+}
+
+.act1 input[type="submit"]:hover
+{
+	cursor: pointer;
+}
+
+.act2
+{
+	position: absolute;
+	width: 550px;
+	height: 90px;
+	left: 530px;
+	top: 450px;
+	background-color: #F5F5F7;
+	border-radius: 25px;
+}
+
+.eng
+{
+	position: absolute;
+	width: 75px;
+	height: 75px;
+	left: 10px;
+	top: 8px;
+	border-radius: 15px;
+}
+
+.act2 h4
+{
+	position: absolute;
+	left: 90px;
+	font-family: Baloo Bhai;
+}
+
+.act2 h5
+{
+	position: absolute;
+	left: 90px;
+	top: 25px;
+}
+
+.act2 h6
+{
+	position: absolute;
+	left: 390px;
+	top: 50px;
+}
+
+.act2 input[type="submit"]
+{
+	position: absolute;
+	border-radius: 15px;
+	width: 100px;
+	height: 50px;
+	left: 430px;
+	top: 20px;
+	background-color: black;
+	color: white;
+	font-size: 12px;
+}
+
+.act2 input[type="submit"]:hover
+{
+	cursor: pointer;
+}
+
+.act3
+{
+	position: absolute;
+	width: 550px;
+	height: 90px;
+	left: 530px;
+	top: 560px;
+	background-color: #F5F5F7;
+	border-radius: 25px;
+}
+
+.eng
+{
+	position: absolute;
+	width: 75px;
+	height: 75px;
+	left: 10px;
+	top: 8px;
+	border-radius: 15px;
+}
+
+.act3 h4
+{
+	position: absolute;
+	left: 90px;
+	font-family: Baloo Bhai;
+}
+
+.act3 h5
+{
+	position: absolute;
+	left: 90px;
+	top: 25px;
+}
+
+.act3 h6
+{
+	position: absolute;
+	left: 390px;
+	top: 50px;
+}
+
+.act3 input[type="submit"]
+{
+	position: absolute;
+	border-radius: 15px;
+	width: 100px;
+	height: 50px;
+	left: 430px;
+	top: 20px;
+	background-color: black;
+	color: white;
+	font-size: 12px;
+}
+
+.act3 input[type="submit"]:hover
+{
+	cursor: pointer;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 560px;
+  padding: 12px 16px;
+  transform: translate(0%, -50%);
+  border-radius: 25px;
+}
+
+.close:hover {background: #bbb;
+}
+
+.anoun1
+{
+	position: absolute;
+	width: 440px;
+	height: 90px;
+	left: 530px;
+	top: 680px;
+	background-color: #F5F5F7;
+	border-radius: 25px;
+}
+
+.anoun1 h2
+{
+	position: absolute;
+	left: 35px;
+	font-family: Baloo Bhai;
+}
+
+.anoun1 h4
+{
+	position: absolute;
+	left: 35px;
+	top: 25px;
+}
+
+.anoun1 h6
+{
+	position: absolute;
+	left: 350px;
+	top: 40px;
+}
+
+.anoun2
+{
+	position: absolute;
+	width: 480px;
+	height: 90px;
+	left: 1130px;
+	top: 470px;
+	background-color: #F5F5F7;
+	border-radius: 25px;
+}
+
+.anoun2 h2
+{
+	position: absolute;
+	left: 35px;
+	font-family: Baloo Bhai;
+}
+
+.anoun2 h4
+{
+	position: absolute;
+	left: 35px;
+	top: 25px;
+}
+
+.anoun2 h6
+{
+	position: absolute;
+	left: 350px;
+	top: 40px;
+}
+
+.btn1 input[type="submit"]
+{
+	position: absolute;
+	width: 100px;
+	height: 50px;
+	left: 1320px;
+	top: 600px;
+	background-color: white;
+	color: black;
+	border-radius: 20px;
+}
+
+.btn1 input[type="submit"]:hover
+{
+	cursor: pointer;
+}
+
+.btn2 input[type="submit"]
+{
+	position: absolute;
+	width: 100px;
+	height: 50px;
+	left: 1430px;
+	top: 600px;
+	background-color: white;
+	color: black;
+	border-radius: 20px;
+}
+
+.btn2 input[type="submit"]:hover
+{
+	cursor: pointer;
+}
+
+.txtJoinCourse1 input
+{
+	border-radius: 25px;
+	position: absolute;
+	left: 1150px;
+	top: 350px;
+	width: 80px;
+	height: 72px;
+	font-size: 50px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.txtJoinCourse2 input
+{
+	border-radius: 25px;
+	position: absolute;
+	left: 1240px;
+	top: 350px;
+	width: 80px;
+	height: 72px;
+	font-size: 50px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.txtJoinCourse3 input
+{
+	border-radius: 25px;
+	position: absolute;
+	left: 1330px;
+	top: 350px;
+	width: 80px;
+	height: 72px;
+	font-size: 50px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.txtJoinCourse4 input
+{
+	border-radius: 25px;
+	position: absolute;
+	left: 1420px;
+	top: 350px;
+	width: 80px;
+	height: 72px;
+	font-size: 50px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.txtJoinCourse5 input
+{
+	border-radius: 25px;
+	position: absolute;
+	left: 1510px;
+	top: 350px;
+	width: 80px;
+	height: 72px;
+	font-size: 50px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.JoinButton input[type="submit"]
+{
+	position: absolute;
+	left: 1450px;
+	top: 450px;
+	border-radius: 15px;
+	background-color: black;
+	color: white;
+	width: 120px;
+	height: 50px;
+}
+
+.btnAddCourse input[type="submit"]
+{
+	position: absolute;
+	border-radius: 15px;
+	width: 100px;
+	height: 50px;
+	left: 960px;
+	top: 665px;
+	background-color: white;
+	color: black;
+	font-size: 12px;
+}
+
+.btnAddCourse input[type="submit"]:hover
+{
+	cursor: pointer;
+}
+
+.loginbox{
+	width: 320px;
+	height: 525px;
+	background: #D3D3D3;
+	color: #fff;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	padding: 70px 30px;
+	font-family: Baloo Bhai;
+	border-radius: 25px;
+}
+
+.loginbox p{
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+
+.loginbox input{
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.loginbox input[type="text"], input[type="password"]
+{
+	border-radius: 25px;
+	border-bottom: 1px solid #fff;
+	outline: none;
+	height: 25px;
+}
+
+.loginbox input[type="submit"]
+{
+	margin-left: 155px;
+	border-radius: 25px;
+	outline: none;
+	width: 100px;
+	height: 35px;
+	background-color: black;
+	color: white;
+	font-size: 12px;
+}
+
+.loginbox input[type="submit"]:hover
+{
+	cursor: pointer;
+}
+	

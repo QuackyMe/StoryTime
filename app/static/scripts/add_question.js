@@ -1,21 +1,23 @@
 var questionButton = document.getElementById('btn_question');
 var questionSection = document.getElementById('questions');
-var q1 = document.getElementById('Q1');
+var template = document.getElementById('template');
 var form = document.querySelector('form');
 
 form.addEventListener('submit', submit);
 questionSection.addEventListener('click', addChoice);
 questionButton.addEventListener('click', addQuestion);
 
-var counter = 1;
+var counter = 0;
+window.onload = addQuestion();
 
 function addChoice(e) {
     if (e.target.id === 'btn_choice') {
-        var newLabel = document.createElement('h4');
+        var newLabel = document.createElement('h2');
         newLabel.appendChild(document.createTextNode('Choice: '));
 
         var newInput = document.createElement('input');
-        newInput.name = 'choice[]';
+        newInput.name = `choice_${e.target.parentElement.id}`;
+
 
         newLabel.appendChild(newInput)
         e.target.parentElement.insertBefore(newLabel, e.target);
@@ -23,12 +25,12 @@ function addChoice(e) {
 }
 
 function addQuestion(e) {
-    if (e.target.id === 'btn_question') {
+    if (counter == 0 || e.target.id === 'btn_question') {
         counter++;
-
-        var clone = q1.cloneNode(true);
-        clone.id = 'Q' + counter;
-        clone.getElementsByTagName('h2')[0].textContent = 'Question ' + counter + ":";
+        var clone = template.cloneNode(true);
+        clone.classList.remove('hidden');
+        clone.id = counter;
+        clone.getElementsByTagName('h2')[0].textContent = `Question ${counter} :`;
 
         input = clone.getElementsByTagName('input');
         for (var i = 0; i < input.length; i++) {
@@ -41,7 +43,6 @@ function addQuestion(e) {
 function submit(e) {
     input = document.getElementsByName
 }
-
 
 
 
