@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles/add_question.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/add_question.css') }}">
     <title>Document</title>
 </head>
 
 <body>
     <h1>Add Activity</h1>
-    <form action="/activity/submit" method="POST" id="activity_form">
+    <form action="/course/code={{course_code}}/create-activity/create" method="POST" id="activity_form">
         <div id='questions'>
             <div id="template" class="hidden">
                 <!-- Question Text Box -->
                 <h2 id="q_number">Question #: </h2> <input type="text" name="question[]">
                 <!-- Select Box -->
-                <h2>Type <select name="type" id="q_type">
+                <h2>Type <select name="type[]" id="q_type">
                         <option value="speech-to-text">Multiple Choice</option>
                         <option value="speech-to-text">Speech-to-Text</option>
                     </select>
@@ -31,12 +31,16 @@
             </div>
             
             <button type="button" id="btn_question">Add Question</button> <br>
-            <input id="q_hidden" name="#question" type="hidden" value="1">
+            <input id="question_num" name="questionNum" type="hidden" value="0">
         </div>
         <input type="submit" value="Submit">
     </form>
+    {% if message %}
+    <h1>{{ message | safe }}</h1>
+    {% endif %}
 
-    <script src="../static/scripts/add_question.js"></script>
+
+    <script src="{{ url_for('static', filename='scripts/add_question.js') }}"></script>
 </body>
 
 </html>

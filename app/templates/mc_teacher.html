@@ -33,7 +33,9 @@
 	{% for course in courses %}
 	<div class="act1">
 		<img src="eng.jpeg" class="eng" name="eng">
-		<a href="course/{{course.code}}"><h4>{{course.name}}</h4></a>
+		<a href="course/{{course.code}}">
+			<h4>{{course.name}}</h4>
+		</a>
 		<input type="submit" name="submit" value="View course">
 	</div>
 	{% endfor %}
@@ -54,6 +56,10 @@
 			});
 		}
 	</script>
+
+	{% if error %}
+	<p class="error">{{ message | safe }}</p>
+	{% endif %}
 
 </body>
 

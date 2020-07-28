@@ -2,6 +2,7 @@ var questionButton = document.getElementById('btn_question');
 var questionSection = document.getElementById('questions');
 var template = document.getElementById('template');
 var form = document.querySelector('form');
+var question_num = document.querySelector('#question_num');
 
 form.addEventListener('submit', submit);
 questionSection.addEventListener('click', addChoice);
@@ -27,6 +28,7 @@ function addChoice(e) {
 function addQuestion(e) {
     if (counter == 0 || e.target.id === 'btn_question') {
         counter++;
+        question_num.value++;
         var clone = template.cloneNode(true);
         clone.classList.remove('hidden');
         clone.id = counter;

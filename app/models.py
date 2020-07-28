@@ -96,12 +96,14 @@ class Question(db.Model):
     __tablename__ = 'Question'
     id = db.Column(db.Integer, primary_key=True)
     activity_id = db.Column(db.Integer, db.ForeignKey('Activity.id'))
+    question_number = db.Column(db.Integer)
     type = db.Column(db.String(20))
     ques = db.Column(db.String(100))
     answer = db.Column(db.String(50))
 
-    def __init__(self, activity_id, type, ques, answer):
+    def __init__(self, activity_id, question_number, type, ques, answer):
         self.activity_id = activity_id
+        self.question_number = question_number
         self.type = type
         self.ques = ques
         self.answer = answer
@@ -110,9 +112,9 @@ class Question(db.Model):
 class Choice(db.Model):
     __tablename__ = 'Choice'
     id = db.Column(db.Integer, primary_key=True)
-    question_id = db.Column(db.Integer, db.ForeignKey('Question.id'))
-    name = db.Column(db.String(100))
+    question_number = db.Column(db.Integer)
+    item = db.Column(db.String(100))
 
-    def __init__(self, question_id, name):
-        self.question_id = question_id
-        self.name = name
+    def __init__(self, question_number, item):
+        self.question_number = question_number
+        self.item = item

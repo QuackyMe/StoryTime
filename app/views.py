@@ -1,6 +1,6 @@
 from app import app, db
 from flask import request, render_template, redirect, session, url_for
-from .models import Account, Course, Member, Announcement
+from .models import Account, Course, Member, Announcement, Question, Activity, Choice
 from .controller.randomGenerator import generate_alphanumeric
 from .model_controller import student_courses, class_members, get_course_id, add_announcement
 
@@ -56,7 +56,8 @@ def register():
     type = request.form['acc_type']
 
     # Register Validation
-    if Account.query.filter_by(username=username).first() is not None:  # Checks the database if username already exist
+    # Checks the database if username already exist
+    if Account.query.filter_by(username=username).first() is not None:
         return render_template('register.html', error='Username Already Exist')
     elif (conf_password != password):  # Checks if password and confirm password match
         return render_template('register.html', error='Password does not match')
@@ -91,7 +92,7 @@ def manage_course():
 @app.route('/course/create')
 def create_course():
     print('account2: ' + str(session["acc_id"]))
-    return render_template('mc_teacher_test.html')
+    return render_template('mc_teacher.html')
 
 
 # Create Course Handler
@@ -101,13 +102,13 @@ def submit_create_course():
     host_id = session["acc_id"]
 
     if Course.query.filter_by(name=course_name).first() is not None:
-        return render_template('mc_teacher_test.html', error='Course Name Already Exist')
+        return render_template('mc_teacher.html', error='Course Name Already Exist')
     else:
         code = generate_alphanumeric(5)
         data = Course(host_id, course_name, code)
         db.session.add(data)
         db.session.commit()
-        return render_template('mc_teacher_test.html', error='Success')
+        return render_template('mc_teacher.html', error='Success')
 
 
 # Add Student Handler
@@ -120,14 +121,14 @@ def add_member():
     if room is None:
         return render_template('mc_student_test.html', message='Course does not exist')
     elif Member.query.filter_by(member_id=student_code).first() is not None:
-        return render_template('mc_student_test.html', message='Already Joined')
+        return render_template('mc_student.html', message='Already Joined')
     elif session['acc_type'] != "Student":
-        return render_template('mc_student_test.html', message='Only students can join')
+        return render_template('mc_student.html', message='Only students can join')
     else:
         data = Member(student_code, room.id)
         db.session.add(data)
         db.session.commit()
-        return render_template('mc_student_test.html', message='Sucessfully Joined Course')
+        return render_template('mc_studen.html', message='Sucessfully Joined Course')
 
 
 # Course Room Page
@@ -135,7 +136,8 @@ def add_member():
 def course_room(course_code):
     print(course_code)
     students = class_members(course_code)
-    announcements = Announcement.query.filter_by(room_id=get_course_id(course_code)).all()
+    announcements = Announcement.query.filter_by(
+        room_id=get_course_id(course_code)).all()
     return render_template('cr_student.html', students=students, announcements=announcements)
 
 
@@ -152,6 +154,49 @@ def create_announcement(course_code):
     return render_template('create_announcement.html', message='Success')
 
 
+# Create Activity Page
+@app.route('/course/code=<course_code>/create-activity/')
+def activity(course_code):
+    Question.query.delete()
+    Choice.query.delete()
+    Activity.query.delete()
+    db.session.commit()
+    return render_template('add_activity.html', course_code=course_code)
+
+
+# Create Activity Handler
+@app.route('/course/code=<course_code>/create-activity/create', methods=['POST'])
+def add_activity(course_code):
+    question = request.form.getlist('question[]')
+    question_type = request.form.getlist('type[]')
+    question_ans = request.form.getlist('answer[]')
+
+    print(f"question {question} - answer {question_ans}")
+    data = Activity(get_course_id(course_code), None)  # Replace with Deadline input
+    db.session.add(data)
+    db.session.commit()
+
+    activity = Activity.query.order_by(Activity.id.desc()).first()
+    print(activity.id)
+    question_list = []
+    for i in range(1, len(question)):
+        print(f"TEEEEEEEEEEEES{activity.id}, {question_type[i]}, {question[i]}, {question_ans[i]}")
+        question_list.append(Question(activity.id, i, question_type[i], question[i], question_ans[i]))
+    db.session.bulk_save_objects(question_list)
+    db.session.commit()
+    choice_list = []
+
+    for i in range(1, len(question)):
+        choices = request.form.getlist(f'choice_{str(i)}')
+        for j in range(len(choices)):
+            ques = Question.query.filter_by(activity_id=activity.id).filter_by(question_number=i).first()
+            choice_list.append(Choice(ques.question_number, choices[i - 1]))
+    db.session.bulk_save_objects(choice_list)
+    db.session.commit()
+
+    return render_template('add_activity.html', course_code=course_code, message="Success!")
+
+
 # TEST PAGE
 @app.route('/test')
 def test_page():
@@ -165,3 +210,6 @@ def test():
     for item in li:
         print(item)
     return str(li)
+
+# course/code=AAAAA/create-activity/
+# nextval('"Question_id_seq"'::regclass)

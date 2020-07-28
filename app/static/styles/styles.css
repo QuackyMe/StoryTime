@@ -750,4 +750,8 @@ select, option
 {
 	cursor: pointer;
 }
-	
+
+.hidden{
+    display: none;
+    visibility: hidden;
+}
