@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    {% block head %}
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/styles.css')}}">
+    <link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
+    {% endblock %}
+
+<body>
+    <div class="navtab">
+        <h1>S</h1>
+        <h2>T</h2>
+        <a href="main.html">
+            <img src="{{ url_for('static', filename='images/house.png') }}" class="house" name="home"></a>
+        <a href="#">
+            <img src="{{ url_for('static', filename='images/hat.png') }}" class="hat" name="courses"></a>
+        <a href="#">
+            <img src="{{ url_for('static', filename='images/person.png') }}" class="person" name="profile"></a>
+        <a href="#">
+            <img src="{{ url_for('static', filename='images/logout.png') }}" class="logout" name="logout"></a>
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</head>
+
+</html>

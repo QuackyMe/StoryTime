@@ -1,8 +1,10 @@
 <html>
+
 <head>
-<title>Register</title>
+	<title>Register</title>
 	<link rel="stylesheet" type="text/css" href="../static/styles/register.css">
 	<link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
+
 <body>
 	<h1>Story Time</h1>
 	<h2>Learn the tales</h2>
@@ -20,13 +22,13 @@
 			<input type="password" name="conf_password" placeholder="Confirm Password">
 			<p>Account type</p>
 			<select name="acc_type" id="account">
-			<option value=" ">Choose your account type</option>
-			<option value="student">Student</option>
-			<option value="teacher">Teacher</option>
+				<option value=" ">Choose your account type</option>
+				<option value="student">Student</option>
+				<option value="teacher">Teacher</option>
 			</select><br><br>
 
 			<a href="main.html">
-			<input type="submit" name="" value="Register"><br></a>
+				<input type="submit" name="" value="Register"><br></a>
 		</form>
 
 		<a href="/login">Have an account?</a> <br>
@@ -42,9 +44,10 @@
 		<p class="message">{{ message | safe }}</p>
 		<br>
 		{% endif %}
-		
+
 	</div>
-	
+
 </body>
 </head>
+
 </html>

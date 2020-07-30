@@ -1,26 +1,31 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div>
-        <h1>Students: </h1>
-        <ul>
-            {% for student in students %}
-            <li><h1>{{student.name}}</li></h1><br>
+{% extends "base.html" %}
+
+{% block title %}
+Course Room
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Students: </h1>
+    <ul>
+        {% for student in students %}
+        <li>
+            <h1>{{student.name}}
+        </li>
+        </h1><br>
+        {% endfor %}
+    </ul>
+</div>
+<div>
+    <h1>Announcements: </h1>
+    <ul>{% for announcement in announcements %}
+        <li>
+            <h3>{{announcement.title}}</h3><br>
+            <h1>{{announcement.message}}</h1>
             {% endfor %}
-        </ul>
-    </div>
-    <div>
-        <h1>Announcements: </h1>
-        <ul>{% for announcement in announcements %}
-            <li><h3>{{announcement.title}}</h3><br>
-                <h1>{{announcement.message}}</h1>
-                {% endfor %}
-            </li>
-        </ul>
-    </div>
-</body>
-</html>
+        </li>
+    </ul>
+</div>
+{% endif %}
+
+{% endblock %}

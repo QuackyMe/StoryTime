@@ -111,7 +111,7 @@ def submit_create_course():
         return render_template('mc_teacher.html', error='Success')
 
 
-# Add Student Handler
+# Join Handler
 @app.route('/course/join/submit', methods=['POST'])
 def add_member():
     join_code = request.form['join_code']
@@ -122,13 +122,13 @@ def add_member():
         return render_template('mc_student_test.html', message='Course does not exist')
     elif Member.query.filter_by(member_id=student_code).first() is not None:
         return render_template('mc_student.html', message='Already Joined')
-    elif session['acc_type'] != "Student":
+    elif session['acc_type'] != "student":
         return render_template('mc_student.html', message='Only students can join')
     else:
         data = Member(student_code, room.id)
         db.session.add(data)
         db.session.commit()
-        return render_template('mc_studen.html', message='Sucessfully Joined Course')
+        return render_template('mc_student.html', message='Sucessfully Joined Course')
 
 
 # Course Room Page
@@ -144,7 +144,7 @@ def course_room(course_code):
 # Create Announcement Page
 @app.route('/course/code=<course_code>/announcement')
 def announcement(course_code):
-    return render_template('create_announcement.html', course_code=course_code)
+    return render_template('add_announcement.html', course_code=course_code)
 
 
 # Create Announcement Handler
@@ -199,13 +199,13 @@ def add_activity(course_code):
 
 # TEST PAGE
 @app.route('/test')
-def test_page():
-    return render_template("test.html")
+def test():
+    return render_template("base.html")
 
 
 # TEST
 @app.route('/test/result', methods=['POST'])
-def test():
+def test_page():
     li = request.form.getlist('test[]')
     for item in li:
         print(item)
