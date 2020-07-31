@@ -1,11 +1,4 @@
-body{
-	margin: 0;
-	padding: 0;
-	background-color: white;
-	background-size: cover;
-	background-position: center;
-	color: black;
-}
+
 /*
 h1{
 	color: black;
@@ -24,121 +17,258 @@ h2{
 	font-size: 30px;
 }
 */
+*{
+	box-sizing: border-box;
+	border-width: 1.5;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	background-color: white;
+	background-size: cover;
+	background-position: center;
+	color: black;
+	font-family: Baloo Bhai;
+}
+
 select, option
 {
 	width: 260px;
 }
 
+/* Navigation */
 .navtab{
-	position: absolute;
-	width: 132px;
-	height: 800px;
-	left: 20px;
-	top: 50px;
+	position: fixed;
+	align-content: right;
 	background-color: black;
 	color: #fff;
 	box-sizing: border-box;
-	padding: 30px 50px;
-	font-family: Baloo Bhai;
-	border-radius: 25px;
-}
-
-.navtab h1
-{
-	position: absolute;
-	width: 36px;
-	height: 102px;
-	left: 40px;
-	top: 25px;
-
-	font-family: Baloo Bhai;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 64px;
-	line-height: 102px;
-}	
-
-.navtab h2
-{
-	position: absolute;
-	width: 27px;
-	height: 77px;
-	left: 70px;
-	top: 60px;
-
-	font-family: Baloo Bhai;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 48px;
-	line-height: 77px;
-	color: #FFFFFF;
-}
-
-.house
-{
-	filter: invert(1);
-	position: absolute;
-	width: 35px;
-	height: 35px;
-	left: 50px;
-	top: 230px;
-}
-
-.hat
-{
-	position: absolute;
-	width: 35px;
-	height: 35px;
-	left: 50px;
-	top: 320px;
+	border-radius: 15px;
+	width: 70px;
+	max-height: 550px;
+	top: 10%;
+	left: 5;
 	
+
 }
 
-.person
+.logo{
+	position: relative;
+	height: 60px;
+	color: #ffcc00;
+	font-weight: 100;
+	font-size: 64px;
+	margin: 0px;
+	padding: 0px;
+
+}
+
+.logo h1, h4{
+	position: absolute;
+	padding: 0px;
+	margin: 0px;
+}
+
+.logo h1{
+	left: 30%;
+	font-size: 0.7em;
+	margin: 0px;
+}
+
+.logo h4{
+	-webkit-text-stroke: 1px black;
+	height: 40px;
+	color: white;
+	font-size: 0.4em;
+	bottom: -11px;
+	left: 50%;
+	padding: 0;
+}
+
+.navigation {
+	text-align: center;
+	margin-top: 40%;
+	padding: 0px;
+	list-style: none;
+}
+
+.navigation img{
+	object-fit: contain;
+	text-align: left;
+	height: 20px;
+	width: 20px;
+	margin: 15px;
+}
+
+.navigation .logout{
+	object-fit: contain;
+	height: 25px;
+	width: 25px;
+	margin-top: 70px;
+
+}
+
+.invert
 {
 	filter: invert(1);
-	position: absolute;
-	width: 45px;
-	height: 45px;
-	left: 42px;
-	top: 390px;
 }
 
-.hood
+.content{
+	background-color: #f5f5f5;
+	border-style: solid;
+	border-radius: 15px;
+	padding: 10px;
+	margin-top: 30px;
+	margin-left: 140px;
+	height: fit-content;
+	width: fit-content;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	justify-content: space-around;
+}
+
+/* Header */
+.header
 {
-	position: absolute;
-	width: 75px;
-	height: 75px;
-	left: 10px;
-	top: 8px;
+	position: relative;
+	color: #ffcc00;
+	font-family: Baloo Bhai;
+	background-color: black;
+	min-height: 80px;
+	width: 90%;
+	margin-left: 120px;
+	padding-left: 20px;
+	border-radius: 15px;
+	display: flex;
+	align-items: center;
+}
+
+.header h1{
+	font-weight: 100;
+	margin: 0;
+	top: 3%;
+	font-size: 36px;
+	line-height: 57px;
+}
+
+.title{
+	margin: 10px;
+}
+
+.panel_1{
+	height: fit-content;
+	width: 600px;
+	margin: 20px;
+	padding: 10px;
+	border-style: solid;
 	border-radius: 15px;
 }
 
-.mail
+/* 1st Panel */
+.panel_1 .course
 {
-	position: absolute;
-	width: 40px;
-	height: 40px;
-	left: 48px;
-	top: 480px;
+	border-style: solid;
+	height: 80px;
+	width: 100%;
+
+	background-color: #F5F5F7;
+	border-radius: 15px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
 }
 
-.settings
-{
-	position: absolute;
-	width: 40px;
-	height: 40px;
-	left: 47px;
-	top: 570px;
+.panel_1 .icon{
+	font-weight: 100;
+	border-style: solid;
+	border-radius: 10px;
+	height: 60px;
+	width: 70px;
+	margin: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.logout
+.panel_1 .icon p{
+	text-align: center;
+}
+
+.panel_1 .details{
+	width: 70%;
+}
+
+.panel_1 input[type="submit"]
 {
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left: 52px;
-	top: 730px;
+	border-radius: 15px;
+	width: 100px;
+	height: 40px;
+	background-color: black;
+	color: white;
+	font-size: 12px;
+	margin-right: 20px;
+}
+
+.panel_1 input[type="submit"]:hover
+{
+	margin: 10px;
+	cursor: pointer;
+}
+
+
+/* Panel 2 */
+.panel_2{
+	padding: 10px;
+	border-style: solid;
+	border-radius: 15px;
+	margin-top: 20px;
+	height: fit-content;
+	width: 600px;
+}
+.label2 h2
+{
+	left: 1150px;
+	top: 270px;
+	font-family: Baloo Bhai;
+}
+
+.course_code{
+	display: flex;
+}
+
+.course_code input[type="text"]
+{
+	margin: 10px;
+	border-radius: 10px;
+	width: 50px;
+	height: 50px;
+	font-size: 50px;
+	text-transform: uppercase;
+}
+
+.JoinButton input[type="submit"]
+{
+	margin: 15px;
+	border-radius: 15px;
+	background-color: black;
+	color: white;
+	width: 70px;
+	height: 40px;
+
+}
+
+.btnAddCourse input[type="submit"]
+{
+	border-radius: 15px;
+	width: 100px;
+	height: 50px;
+	left: 960px;
+	top: 665px;
+	background-color: white;
+	color: black;
+	font-size: 12px;
 }
 
 .stud1{
@@ -224,37 +354,6 @@ select, option
 	font-family: Baloo Bhai;
 }
 
-.header
-{
-	position: absolute;
-	width: 1120px;
-	height: 160px;
-	left: 500px;
-	top: 75px;
-	background-color: #F5F5F7;
-	color: #000000;
-	box-sizing: border-box;
-	padding: 30px 50px;
-	font-family: Baloo Bhai;
-	border-radius: 25px;
-}
-
-.label1 h2
-{
-	position: absolute;
-	left: 530px;
-	top: 270px;
-	font-family: Baloo Bhai;
-}
-
-.label2 h2
-{
-	position: absolute;
-	left: 1150px;
-	top: 270px;
-	font-family: Baloo Bhai;
-}
-
 .label3 h2
 {
 	position: absolute;
@@ -287,15 +386,7 @@ select, option
 	font-family: Baloo Bhai;
 }
 
-.eng
-{
-	position: absolute;
-	width: 75px;
-	height: 75px;
-	left: 10px;
-	top: 8px;
-	border-radius: 15px;
-}
+
 
 .lamb
 {
@@ -316,57 +407,6 @@ select, option
 	top: 8px;
 	border-radius: 15px;
 }
-
-.act1
-{
-	position: absolute;
-	width: 550px;
-	height: 90px;
-	left: 530px;
-	top: 340px;
-	background-color: #F5F5F7;
-	border-radius: 25px;
-}
-
-.act1 h4
-{
-	position: absolute;
-	left: 90px;
-	font-family: Baloo Bhai;
-}
-
-.act1 h5
-{
-	position: absolute;
-	left: 90px;
-	top: 25px;
-}
-
-.act1 h6
-{
-	position: absolute;
-	left: 390px;
-	top: 50px;
-}
-
-.act1 input[type="submit"]
-{
-	position: absolute;
-	border-radius: 15px;
-	width: 100px;
-	height: 50px;
-	left: 430px;
-	top: 20px;
-	background-color: black;
-	color: white;
-	font-size: 12px;
-}
-
-.act1 input[type="submit"]:hover
-{
-	cursor: pointer;
-}
-
 .act2
 {
 	position: absolute;
@@ -563,7 +603,7 @@ select, option
 	left: 350px;
 	top: 40px;
 }
-
+/*
 .btn1 input[type="submit"]
 {
 	position: absolute;
@@ -575,7 +615,6 @@ select, option
 	color: black;
 	border-radius: 20px;
 }
-
 .btn1 input[type="submit"]:hover
 {
 	cursor: pointer;
@@ -598,100 +637,13 @@ select, option
 	cursor: pointer;
 }
 
-.txtJoinCourse1 input
-{
-	border-radius: 25px;
-	position: absolute;
-	left: 1150px;
-	top: 350px;
-	width: 80px;
-	height: 72px;
-	font-size: 50px;
-	text-align: center;
-	text-transform: uppercase;
-}
 
-.txtJoinCourse2 input
-{
-	border-radius: 25px;
-	position: absolute;
-	left: 1240px;
-	top: 350px;
-	width: 80px;
-	height: 72px;
-	font-size: 50px;
-	text-align: center;
-	text-transform: uppercase;
-}
-
-.txtJoinCourse3 input
-{
-	border-radius: 25px;
-	position: absolute;
-	left: 1330px;
-	top: 350px;
-	width: 80px;
-	height: 72px;
-	font-size: 50px;
-	text-align: center;
-	text-transform: uppercase;
-}
-
-.txtJoinCourse4 input
-{
-	border-radius: 25px;
-	position: absolute;
-	left: 1420px;
-	top: 350px;
-	width: 80px;
-	height: 72px;
-	font-size: 50px;
-	text-align: center;
-	text-transform: uppercase;
-}
-
-.txtJoinCourse5 input
-{
-	border-radius: 25px;
-	position: absolute;
-	left: 1510px;
-	top: 350px;
-	width: 80px;
-	height: 72px;
-	font-size: 50px;
-	text-align: center;
-	text-transform: uppercase;
-}
-
-.JoinButton input[type="submit"]
-{
-	position: absolute;
-	left: 1450px;
-	top: 450px;
-	border-radius: 15px;
-	background-color: black;
-	color: white;
-	width: 120px;
-	height: 50px;
-}
-
-.btnAddCourse input[type="submit"]
-{
-	position: absolute;
-	border-radius: 15px;
-	width: 100px;
-	height: 50px;
-	left: 960px;
-	top: 665px;
-	background-color: white;
-	color: black;
-	font-size: 12px;
-}
 
 .btnAddCourse input[type="submit"]:hover
 {
 	cursor: pointer;
 }
+*/
 
 .loginbox{
 	width: 320px;
@@ -749,14 +701,7 @@ select, option
     visibility: hidden;
 }
 
-.course{
-	
-	position: absolute;
-	top: 250px;
-	left: 510px;
-	font-family: Baloo Bhai;
-}
-
+/* 
 .course input[type="text"], input[type="password"]{
 	width: 300px;
 	height: 30px;
@@ -781,12 +726,12 @@ select, option
 	background-color: white;
 	color: black;
 	font-size: 12px;
-}
+} */
 
-.course input[type="submit"]:hover
+/* .course input[type="submit"]:hover
 {
 	cursor: pointer;
-}
+} */
 
 .title1 input[type=text]
 {
