@@ -89,10 +89,10 @@ def manage_course():
 
 
 # Create Course Page
-@app.route('/course/create')
-def create_course():
-    print('account2: ' + str(session["acc_id"]))
-    return render_template('mc_teacher.html')
+# @app.route('/course/create')
+# def create_course():
+#     print('account2: ' + str(session["acc_id"]))
+#     return render_template('mc_teacher.html')
 
 
 # Create Course Handler
@@ -117,7 +117,7 @@ def add_member():
     join_code = request.form['join_code']
     room = Course.query.filter_by(code=join_code).first()
     student_code = session["acc_id"]
-
+    join_code = ''.join(join_code)
     if room is None:
         return render_template('mc_student_test.html', message='Course does not exist')
     elif Member.query.filter_by(member_id=student_code).first() is not None:
@@ -132,7 +132,7 @@ def add_member():
 
 
 # Course Room Page
-@app.route('/course/code=<course_code>/')
+@app.route('/manage-course/code=<course_code>/')
 def course_room(course_code):
     print(course_code)
     students = class_members(course_code)
@@ -142,20 +142,20 @@ def course_room(course_code):
 
 
 # Create Announcement Page
-@app.route('/course/code=<course_code>/announcement')
+@app.route('/manage-course/code=<course_code>/announcement')
 def announcement(course_code):
     return render_template('add_announcement.html', course_code=course_code)
 
 
 # Create Announcement Handler
-@app.route('/course/code=<course_code>/announcement/create', methods=['POST'])
+@app.route('/manage-course/code=<course_code>/announcement/create', methods=['POST'])
 def create_announcement(course_code):
     add_announcement(course_code)
     return render_template('create_announcement.html', message='Success')
 
 
 # Create Activity Page
-@app.route('/course/code=<course_code>/create-activity/')
+@app.route('/manage-course/code=<course_code>/create-activity/')
 def activity(course_code):
     Question.query.delete()
     Choice.query.delete()
@@ -165,7 +165,7 @@ def activity(course_code):
 
 
 # Create Activity Handler
-@app.route('/course/code=<course_code>/create-activity/create', methods=['POST'])
+@app.route('/manage-course/code=<course_code>/create-activity/create', methods=['POST'])
 def add_activity(course_code):
     question = request.form.getlist('question[]')
     question_type = request.form.getlist('type[]')

@@ -5,23 +5,34 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/styles.css')}}">
     <link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     {% endblock %}
 
 <body>
-    <div class="navtab">
-        <h1>S</h1>
-        <h2>T</h2>
-        <a href="main.html">
-            <img src="{{ url_for('static', filename='images/house.png') }}" class="house" name="home"></a>
-        <a href="#">
-            <img src="{{ url_for('static', filename='images/hat.png') }}" class="hat" name="courses"></a>
-        <a href="#">
-            <img src="{{ url_for('static', filename='images/person.png') }}" class="person" name="profile"></a>
-        <a href="#">
-            <img src="{{ url_for('static', filename='images/logout.png') }}" class="logout" name="logout"></a>
+    <nav class="navtab">
+		<div class="logo">
+			<h1>S</h1>
+			<h4>T</h4>
+		</div>
+		<ul class="navigation">
+			<li>
+				<a href="#"><img src="../static/images/house.png" class="invert" name="home"></a>
+			</li>
+			<li>
+				<a href="#"><img src="../static/images/hat.png" name="courses"></a>
+			</li>
+			<li>
+				<a href="#"><img src="../static/images/person.png" class="invert" name="profile"></a>
+			</li>
+			<li>
+				<a href="/logout"><img src="../static/images/logout.png" class="logout" name="logout"></a>
+			</li>
+		</ul>
+	</nav>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
     </div>
-    {% block content %}
-    {% endblock %}
 </body>
 </head>
 

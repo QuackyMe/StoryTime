@@ -2,38 +2,45 @@
 
 <head>
 	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="../static/styles/login.css">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/styles.css')}}">
 	<link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
 
 <body>
-	<h1>Story Time</h1>
-	<h2>Learn the tales</h2>
+	<div class="login_title">
+		<h1>Story Time</h1>
+		<h3>Learn the tales</h2>
+	</div>
+	<form action="/login/submit" method="POST">
+		<div class="login_frame">
+			<div class="login_background">
+				<h2>Login</h2>
+				<div class="login_panel">
+					<p>Username</p>
+					<input type="text" name="username" placeholder="Enter Username">
+				</div>
+				<div class="login_panel">
+					<p>Password</p>
+					<input type="password" name="password" placeholder="Enter Password">
+				</div>
+				<input type="submit" value="Login"><br>
+			</div>
+			<a href=/register />New here?</a>
 
-	<div class="loginbox">
-		<h2>Login</h2>
+			<!--Error Message-->
+			{% if error %}
+			<p class="error">Error: {{ error | safe }}</p>
+			<br>
+			{% endif %}
 
-		<!--Login Form-->
-		<form method="POST" action="/login/submit">
-			<p>Username</p>
-			<input type="text" name="username" placeholder="Enter Username">
-			<p>Password</p>
-			<input type="password" name="password" placeholder="Enter Password">
-			<input type="submit" name="" value="Login"><br>
-		</form>
+			<!--Message-->
+			{% if message %}
+			<p class="message">{{ message | safe }}</p>
+			<br>
+			{% endif %}
 
-		<a href="/register">New here?</a> <br> <br>
+		</div>
+	</form>
 
-		<!--Error Message-->
-		{% if error %}
-		<p class="error">Error: {{ error | safe }}</p>
-		<br>
-		{% endif %}
-
-		<!--Message-->
-		{% if message %}
-		<p class="message">{{ message | safe }}</p>
-		<br>
-		{% endif %}
 
 	</div>
 

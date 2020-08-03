@@ -1,831 +1,335 @@
-body{
-	margin: 0;
-	padding: 0;
-	background-color: white;
-	background-size: cover;
-	background-position: center;
-	color: black;
-}
-/*
-h1{
-	color: black;
-	margin: 0;
-	padding: 0 0 20px;
-	text-align: center;
-	font-family: Baloo Bhai;
-	font-size: 70px;
-}
-
-h2{
-	margin: 0;
-	padding: 0 0 20px;
-	text-align: center;
-	font-family: Baloo Bhai;
-	font-size: 30px;
-}
-*/
-select, option
-{
-	width: 260px;
-}
-
-.navtab{
-	position: absolute;
-	width: 132px;
-	height: 800px;
-	left: 20px;
-	top: 50px;
-	background-color: black;
-	color: #fff;
-	box-sizing: border-box;
-	padding: 30px 50px;
-	font-family: Baloo Bhai;
-	border-radius: 25px;
-}
-
-.navtab h1
-{
-	position: absolute;
-	width: 36px;
-	height: 102px;
-	left: 40px;
-	top: 25px;
-
-	font-family: Baloo Bhai;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 64px;
-	line-height: 102px;
-}	
-
-.navtab h2
-{
-	position: absolute;
-	width: 27px;
-	height: 77px;
-	left: 70px;
-	top: 60px;
-
-	font-family: Baloo Bhai;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 48px;
-	line-height: 77px;
-	color: #FFFFFF;
-}
-
-.house
-{
-	filter: invert(1);
-	position: absolute;
-	width: 35px;
-	height: 35px;
-	left: 50px;
-	top: 230px;
-}
-
-.hat
-{
-	position: absolute;
-	width: 35px;
-	height: 35px;
-	left: 50px;
-	top: 320px;
-	
-}
-
-.person
-{
-	filter: invert(1);
-	position: absolute;
-	width: 45px;
-	height: 45px;
-	left: 42px;
-	top: 390px;
-}
-
-.hood
-{
-	position: absolute;
-	width: 75px;
-	height: 75px;
-	left: 10px;
-	top: 8px;
-	border-radius: 15px;
-}
-
-.mail
-{
-	position: absolute;
-	width: 40px;
-	height: 40px;
-	left: 48px;
-	top: 480px;
-}
-
-.settings
-{
-	position: absolute;
-	width: 40px;
-	height: 40px;
-	left: 47px;
-	top: 570px;
-}
-
-.logout
-{
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left: 52px;
-	top: 730px;
-}
-
-.stud1{
-	position: absolute;
-	width: 440px;
-	height: 90px;
-	left: 530px;
-	top: 300px;
-	background-color: #F5F5F7;
-	border-radius: 25px;
-}
-
-.james
-{
-	position: absolute;
-	width: 75px;
-	height: 75px;
-	left: 10px;
-	top: 8px;
-	border-radius: 15px;
-}
-
-.stud1 h4
-{
-	position: absolute;
-	left: 90px;
-	font-family: Baloo Bhai;
-}
-
-.stud2
-{
-	position: absolute;
-	width: 440px;
-	height: 90px;
-	left: 530px;
-	top: 400px;
-	background-color: #F5F5F7;
-	border-radius: 25px;
-}
-
-.carlo
-{
-	position: absolute;
-	width: 75px;
-	height: 75px;
-	left: 10px;
-	top: 8px;
-	border-radius: 15px;
-}
-
-.stud2 h4
-{
-	position: absolute;
-	left: 90px;
-	font-family: Baloo Bhai;
-}
-
-.stud3
-{
-	position: absolute;
-	width: 440px;
-	height: 90px;
-	left: 530px;
-	top: 500px;
-	background-color: #F5F5F7;
-	border-radius: 25px;
-}
-
-.kyle
-{
-	position: absolute;
-	width: 75px;
-	height: 75px;
-	left: 10px;
-	top: 8px;
-	border-radius: 15px;
-}
-
-.stud3 h4
-{
-	position: absolute;
-	left: 90px;
-	font-family: Baloo Bhai;
-}
-
-.header
-{
-	position: absolute;
-	width: 1120px;
-	height: 160px;
-	left: 500px;
-	top: 75px;
-	background-color: #F5F5F7;
-	color: #000000;
-	box-sizing: border-box;
-	padding: 30px 50px;
-	font-family: Baloo Bhai;
-	border-radius: 25px;
-}
-
-.label1 h2
-{
-	position: absolute;
-	left: 530px;
-	top: 270px;
-	font-family: Baloo Bhai;
-}
-
-.label2 h2
-{
-	position: absolute;
-	left: 1150px;
-	top: 270px;
-	font-family: Baloo Bhai;
-}
-
-.label3 h2
-{
-	position: absolute;
-	left: 1010px;
-	top: 285px;
-	font-family: Baloo Bhai;
-}
-
-.label4 h2
-{
-	position: absolute;
-	left: 530px;
-	top: 600px;
-	font-family: Baloo Bhai;
-}
-
-.label5 h2
-{
-	position: absolute;
-	left: 1010px;
-	top: 440px;
-	font-family: Baloo Bhai;
-}
-
-.label6 h2
-{
-	position: absolute;
-	left: 1010px;
-	top: 600px;
-	font-family: Baloo Bhai;
-}
-
-.eng
-{
-	position: absolute;
-	width: 75px;
-	height: 75px;
-	left: 10px;
-	top: 8px;
-	border-radius: 15px;
-}
-
-.lamb
-{
-	position: absolute;
-	width: 75px;
-	height: 75px;
-	left: 10px;
-	top: 8px;
-	border-radius: 15px;
-}
-
-.pigs
-{
-	position: absolute;
-	width: 75px;
-	height: 75px;
-	left: 10px;
-	top: 8px;
-	border-radius: 15px;
-}
-
-.act1
-{
-	position: absolute;
-	width: 550px;
-	height: 90px;
-	left: 530px;
-	top: 340px;
-	background-color: #F5F5F7;
-	border-radius: 25px;
-}
-
-.act1 h4
-{
-	position: absolute;
-	left: 90px;
-	font-family: Baloo Bhai;
-}
-
-.act1 h5
-{
-	position: absolute;
-	left: 90px;
-	top: 25px;
-}
-
-.act1 h6
-{
-	position: absolute;
-	left: 390px;
-	top: 50px;
-}
-
-.act1 input[type="submit"]
-{
-	position: absolute;
-	border-radius: 15px;
-	width: 100px;
-	height: 50px;
-	left: 430px;
-	top: 20px;
-	background-color: black;
-	color: white;
-	font-size: 12px;
-}
-
-.act1 input[type="submit"]:hover
-{
-	cursor: pointer;
-}
-
-.act2
-{
-	position: absolute;
-	width: 550px;
-	height: 90px;
-	left: 530px;
-	top: 450px;
-	background-color: #F5F5F7;
-	border-radius: 25px;
-}
-
-.eng
-{
-	position: absolute;
-	width: 75px;
-	height: 75px;
-	left: 10px;
-	top: 8px;
-	border-radius: 15px;
-}
-
-.act2 h4
-{
-	position: absolute;
-	left: 90px;
-	font-family: Baloo Bhai;
-}
-
-.act2 h5
-{
-	position: absolute;
-	left: 90px;
-	top: 25px;
-}
-
-.act2 h6
-{
-	position: absolute;
-	left: 390px;
-	top: 50px;
-}
-
-.act2 input[type="submit"]
-{
-	position: absolute;
-	border-radius: 15px;
-	width: 100px;
-	height: 50px;
-	left: 430px;
-	top: 20px;
-	background-color: black;
-	color: white;
-	font-size: 12px;
-}
-
-.act2 input[type="submit"]:hover
-{
-	cursor: pointer;
-}
-
-.act3
-{
-	position: absolute;
-	width: 550px;
-	height: 90px;
-	left: 530px;
-	top: 560px;
-	background-color: #F5F5F7;
-	border-radius: 25px;
-}
-
-.eng
-{
-	position: absolute;
-	width: 75px;
-	height: 75px;
-	left: 10px;
-	top: 8px;
-	border-radius: 15px;
-}
-
-.act3 h4
-{
-	position: absolute;
-	left: 90px;
-	font-family: Baloo Bhai;
-}
-
-.act3 h5
-{
-	position: absolute;
-	left: 90px;
-	top: 25px;
-}
-
-.act3 h6
-{
-	position: absolute;
-	left: 390px;
-	top: 50px;
-}
-
-.act3 input[type="submit"]
-{
-	position: absolute;
-	border-radius: 15px;
-	width: 100px;
-	height: 50px;
-	left: 430px;
-	top: 20px;
-	background-color: black;
-	color: white;
-	font-size: 12px;
-}
-
-.act3 input[type="submit"]:hover
-{
-	cursor: pointer;
-}
-
-.close {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 560px;
-  padding: 12px 16px;
-  transform: translate(0%, -50%);
-  border-radius: 25px;
-}
-
-.close:hover {background: #bbb;
-}
-
-.anoun1
-{
-	position: absolute;
-	width: 440px;
-	height: 90px;
-	left: 530px;
-	top: 680px;
-	background-color: #F5F5F7;
-	border-radius: 25px;
-}
-
-.anoun1 h2
-{
-	position: absolute;
-	left: 35px;
-	font-family: Baloo Bhai;
-}
-
-.anoun1 h4
-{
-	position: absolute;
-	left: 35px;
-	top: 25px;
-}
-
-.anoun1 h6
-{
-	position: absolute;
-	left: 350px;
-	top: 40px;
-}
-
-.anoun2
-{
-	position: absolute;
-	width: 480px;
-	height: 90px;
-	left: 1130px;
-	top: 470px;
-	background-color: #F5F5F7;
-	border-radius: 25px;
-}
-
-.anoun2 h2
-{
-	position: absolute;
-	left: 35px;
-	font-family: Baloo Bhai;
-}
-
-.anoun2 h4
-{
-	position: absolute;
-	left: 35px;
-	top: 25px;
-}
-
-.anoun2 h6
-{
-	position: absolute;
-	left: 350px;
-	top: 40px;
-}
-
-.btn1 input[type="submit"]
-{
-	position: absolute;
-	width: 100px;
-	height: 50px;
-	left: 1320px;
-	top: 600px;
-	background-color: white;
-	color: black;
-	border-radius: 20px;
-}
-
-.btn1 input[type="submit"]:hover
-{
-	cursor: pointer;
-}
-
-.btn2 input[type="submit"]
-{
-	position: absolute;
-	width: 100px;
-	height: 50px;
-	left: 1430px;
-	top: 600px;
-	background-color: white;
-	color: black;
-	border-radius: 20px;
-}
-
-.btn2 input[type="submit"]:hover
-{
-	cursor: pointer;
-}
-
-.txtJoinCourse1 input
-{
-	border-radius: 25px;
-	position: absolute;
-	left: 1150px;
-	top: 350px;
-	width: 80px;
-	height: 72px;
-	font-size: 50px;
-	text-align: center;
-	text-transform: uppercase;
-}
-
-.txtJoinCourse2 input
-{
-	border-radius: 25px;
-	position: absolute;
-	left: 1240px;
-	top: 350px;
-	width: 80px;
-	height: 72px;
-	font-size: 50px;
-	text-align: center;
-	text-transform: uppercase;
-}
-
-.txtJoinCourse3 input
-{
-	border-radius: 25px;
-	position: absolute;
-	left: 1330px;
-	top: 350px;
-	width: 80px;
-	height: 72px;
-	font-size: 50px;
-	text-align: center;
-	text-transform: uppercase;
-}
-
-.txtJoinCourse4 input
-{
-	border-radius: 25px;
-	position: absolute;
-	left: 1420px;
-	top: 350px;
-	width: 80px;
-	height: 72px;
-	font-size: 50px;
-	text-align: center;
-	text-transform: uppercase;
-}
-
-.txtJoinCourse5 input
-{
-	border-radius: 25px;
-	position: absolute;
-	left: 1510px;
-	top: 350px;
-	width: 80px;
-	height: 72px;
-	font-size: 50px;
-	text-align: center;
-	text-transform: uppercase;
-}
-
-.JoinButton input[type="submit"]
-{
-	position: absolute;
-	left: 1450px;
-	top: 450px;
-	border-radius: 15px;
-	background-color: black;
-	color: white;
-	width: 120px;
-	height: 50px;
-}
-
-.btnAddCourse input[type="submit"]
-{
-	position: absolute;
-	border-radius: 15px;
-	width: 100px;
-	height: 50px;
-	left: 960px;
-	top: 665px;
-	background-color: white;
-	color: black;
-	font-size: 12px;
-}
-
-.btnAddCourse input[type="submit"]:hover
-{
-	cursor: pointer;
-}
-
-.loginbox{
-	width: 320px;
-	height: 525px;
-	background: #D3D3D3;
-	color: #fff;
-	top: 50%;
-	left: 50%;
-	position: absolute;
-	transform: translate(-50%,-50%);
-	box-sizing: border-box;
-	padding: 70px 30px;
-	font-family: Baloo Bhai;
-	border-radius: 25px;
-}
-
-.loginbox p{
-	margin: 0;
-	padding: 0;
-	font-weight: bold;
-}
-
-.loginbox input{
-	width: 100%;
-	margin-bottom: 20px;
-}
-
-.loginbox input[type="text"], input[type="password"]
-{
-	border-radius: 25px;
-	border-bottom: 1px solid #fff;
-	outline: none;
-	height: 25px;
-}
-
-.loginbox input[type="submit"]
-{
-	margin-left: 155px;
-	border-radius: 25px;
-	outline: none;
-	width: 100px;
-	height: 35px;
-	background-color: black;
-	color: white;
-	font-size: 12px;
-}
-
-.loginbox input[type="submit"]:hover
-{
-	cursor: pointer;
-}
-
-.hidden{
-    display: none;
-    visibility: hidden;
-}
-
-.course{
-	
-	position: absolute;
-	top: 250px;
-	left: 510px;
-	font-family: Baloo Bhai;
-}
-
-.course input[type="text"], input[type="password"]{
-	width: 300px;
-	height: 30px;
-}
-
-.course label{
-	font-size: 32px;
-	display: inline-block;
-    width: 270px;
-    text-align: right;
-}
-
-.course input[type="submit"]
-{
-	position: absolute;
-	left: 450px;
-	top: 160px;
-	border-radius: 25px;
-	outline: none;
-	width: 100px;
-	height: 35px;
-	background-color: white;
-	color: black;
-	font-size: 12px;
-}
-
-.course input[type="submit"]:hover
-{
-	cursor: pointer;
-}
-
-.title1 input[type=text]
-{
-    position: absolute;
-    left: 510px;
-    top: 300px;
-    right: 400px;
-    bottom: 630px;
-    font-family: Baloo Bhai;
+* {
     box-sizing: border-box;
-    background: #FFFFFF;
-    width: 700px;
-}
-
-.details1 input[type=text]
-{
-    position: absolute;
-    left: 510px;
-    top: 420px;
-    right: 400px;
-    bottom: 630px;
-    font-family: Baloo Bhai;
-    box-sizing: border-box;
-    background: #FFFFFF;
-    width: 700px;
-    height: 150px;
-}
-
-.post1 input[type=submit]
-{
-    position: absolute;
-    left: 1110px;
-    top: 600px;
-    border-radius: 25px;
-    outline: none;
-    width: 100px;
-    height: 35px;
+    border-width: 1;
+    overflow: hidden;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
     background-color: white;
+    background-size: cover;
+    background-position: center;
     color: black;
+    font-family: Baloo Bhai;
+    font-weight: lighter;
+    font-size: 1.2em;
+  }
+  
+  button, input[type="submit"]{
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    color: #f5f5f5;
+    width: fit-content;
+    height: 35px;
+    padding: 10px;
+    background-color: #000000;
+    border-color: black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    z-index: 100;
+  }
+  
+  button:hover, input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: #f2c94c;
+    color: black;
+    border-style: solid;
+    border-color: black;
+  }
+  
+  select,
+  option {
+    width: 260px;
+  }
+  
+  /* Login Page */
+  .login_title {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .login_frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+  }
+  
+  .login_background {
+    position: relative;
+    color: black;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    font-family: Baloo Bhai;
+    background-color: #f2c94c;
+    width: 350px;
+    height: fit-content;
+    margin-top: 5px;
+    border-radius: 15px;
+    padding: 0px;
+    margin: 50px;
+  }
+  
+  .login_panel {
+    font-weight: 100;
+    text-align: left;
+    background-color: #f5f5f5;
+    height: fit-content;
+    margin: 30px;
+    width: 80%;
+    padding: 10px;
+    border-style: solid;
+    border-radius: 15px;
+    
+  }
+  
+  .login_panel input[type='text'], input[type='password'], select{
+    width: 100%;
+    border-radius: 3px;
+  }
+  /* Navigation */
+  .navtab {
+    position: fixed;
+    align-content: right;
+    background-color: black;
+    color: #fff;
+    box-sizing: border-box;
+    border-radius: 15px;
+    width: 70px;
+    max-height: 550px;
+    top: 30%;
+    left: 2px;
+  }
+  
+  .logo {
+    position: relative;
+    height: 60px;
+    color: #f2c94c;
+    font-weight: 100;
+    font-size: 64px;
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  .logo h1,
+  h4 {
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  .logo h1 {
+    left: 30%;
+    font-size: 0.7em;
+    margin: 0px;
+  }
+  
+  .logo h4 {
+    -webkit-text-stroke: 1px black;
+    height: 40px;
+    color: white;
+    font-size: 0.4em;
+    bottom: -11px;
+    left: 50%;
+    padding: 0;
+  }
+  
+  .navigation {
+    text-align: center;
+    margin-top: 40%;
+    padding: 0px;
+    list-style: none;
+  }
+  
+  .navigation img {
+    object-fit: contain;
+    text-align: left;
+    height: 20px;
+    width: 20px;
+    margin: 15px;
+  }
+  
+  .navigation .logout {
+    object-fit: contain;
+    height: 25px;
+    width: 25px;
+    margin-top: 70px;
+  }
+  
+  .invert {
+    filter: invert(1);
+  }
+  
+  .content {
+    margin-top: 30px;
+    margin-left: 140px;
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    padding: 0% 10%;
+  }
+  
+  /* Header */
+  
+  .header {
+    position: relative;
+    color: black;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    font-family: Baloo Bhai;
+    background-color: #f2c94c;
+    width: 100%;
+    margin-top: 5px;
+    padding-left: 20px;
+    border-radius: 15px;
+    display: flex;
+    font-size: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px;
+  }
+  
+  .header h1,
+  h2 {
+    font-weight: 100;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header h1 {
+    font-size: 60px;
+  }
+  
+  .header h2 {
+    font-size: 21px;
+  }
+  
+  /* Panel Format */
+  
+  .panel {
+    position: relative;
+    background-color: #f5f5f5;
+    height: fit-content;
+    width: fit-content;
+    margin: 20px;
+    padding: 30px;
+    border-style: solid;
+    border-radius: 15px;
+  }
+  
+  .title {
+    position: relative;
+    font-size: 1.3em;
+  }
+  
+  .title_right{
+    float: right;
+  }
+  
+  .title button{
+    position: absolute;
+    right: 20px;
+    top: 15%;
+  }
+  
+  .data {
+    position: relative;
+    border-style: solid;
+    height: 80px;
+    width: 500px;
+    background-color: #f2c94c;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+  .data .icon {
+    font-weight: 100;
+    border-radius: 10px;
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: #f2c94c;
+  }
+  
+  .data .details {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .data .details h4 {
+    width: fit-content;
     font-size: 20px;
     font-weight: bold;
-}
+  }
+  
+  .data .details h5 {
+    position: absolute;
+    font-family: "Roboto", sans-serif;
+    font-weight: lighter;
+  }
+  
+  .panel input[type="submit"] {
+    position: absolute;
+    right: 5px;
+    bottom: 10px;
+  
+  }
+  
+  .data .item_date {
+    position: absolute;
+    height: 30px;
+    width: fit-content;
+    bottom: 0px;
+    right: 0px;
+  }
+  
+  .data .close {
+    position: absolute;
+    cursor: pointer;
+    top: -8px;
+    right: -3px;
+    padding: 3px 9px;
+    border-radius: 25px;
+  }
+  
+  .data .close:hover {
+    background: black;
+    color: #f2c94c;
+  }
+  
+  .hidden {
+    display: none;
+    visibility: hidden;
+  }
+  
+  #course_code {
+    display: flex;
+  }
+  
+  #course_code input[type="text"] {
+    margin: 10px;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    text-transform: uppercase;
+  }

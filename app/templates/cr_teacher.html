@@ -3,13 +3,16 @@
 {% block title %}
 Course Room
 {% endblock %}
-
 {% block content %}
 <div class="header">
     <h1>Course</h1>
 </div>
 
 <div class="panel">
+    <!-- Returns Number of Students to Database -->
+    <div class="title_right">
+        <h5>Students: 3</h5>
+    </div>
     <div class="title">
         <h2>Students</h2>
     </div>
@@ -21,9 +24,14 @@ Course Room
         </div>
     </div>
     {% endfor %}
-
 </div>
 <div class="panel">
+    <div class="title_right">
+        <!-- Link To Add Announcement -->
+        <form action='/course/code={{ course_code }}/'>
+            <input type="submit" value="Post an Announcement">
+        </form>
+    </div>
     <div class="title">
         <h2>Announcements</h2>
     </div>
@@ -38,9 +46,13 @@ Course Room
         </div>
     </div>
     {% endfor %}
-
 </div>
 <div class="panel">
+    <div class="title_right">
+        <form action="">
+            <input type="submit" value="Create an Activity">
+        </form>
+    </div>
     <div class="title">
         <h2>Activities</h2>
     </div>
@@ -84,5 +96,4 @@ Course Room
         </div>
     </div>
 </div>
-
 {% endblock %}
