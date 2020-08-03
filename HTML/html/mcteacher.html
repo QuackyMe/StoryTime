@@ -2,57 +2,83 @@
 
 <head>
 	<title>Manage Course - Teacher</title>
-	<link rel="stylesheet" type="text/css" href="../styles/styles.css">
+	<link rel="stylesheet" type="text/css" href="./styles.css">
 	<link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
 
 <body>
-	<div class="navtab">
+	<nav class="navtab">
+		<div class="logo">
 			<h1>S</h1>
-			<h2>T</h2>
-			<a href="main.html">
-				<img src="house.png" class="house" name="home"></a>
-			<a href="#">
-				<img src="hat.png" class="hat" name="courses"></a>
-			<a href="#">
-				<img src="person.jpg" class="person" name="profile"></a>
-			<a href="#">
-				<img src="mail.png" class="mail" name="mail"></a>
-			<a href="#">
-				<img src="setting.png" class="settings" name="settings"></a>
-			<a href="index.html">
-				<img src="logout.png" class="logout" name="logout"></a>
-	</div>
-	<div class="header">
-		<font color="black">
-			<h1>Courses</h1>
-	</div>
-	<div class="label1">
-		<h2>Created Courses</h2>
-	</div>
-	<div class="act1">
-		<img src="../static/images/eng.jpeg" class="eng" name="eng">
-		<h4>English Class/Grade 1-Section 1</h4>
-		<h5>Adviser: Ms. Morales </h5>
-		<input type="submit" name="submit" value="View course">
-		<span class="close">&times;</span>
-	</div>
-	<div class="act2">
-		<img src="../static/images/eng.jpeg" class="eng" name="eng">
-		<h4>English Class/Grade 1-Section 3</h4>
-		<h5>Adviser: Ms. Morales </h5>
-		<input type="submit" name="submit" value="View course">
-		<span class="close">&times;</span>
-	</div>
-	<div class="act3">
-		<img src="../static/images/eng.jpeg" class="eng" name="eng">
-		<h4>English Class/Grade 3-Section 2</h4>
-		<h5>Adviser: Ms. Morales </h5>
-		<input type="submit" name="submit" value="View course">
-		<span class="close">&times;</span>
-	</div>
+			<h4>T</h4>
+		</div>
+		<ul class="navigation">
+			<li>
+				<a href="#"><img src="../static/images/house.png" class="invert" name="home"></a>
+			</li>
+			<li>
+				<a href="#"><img src="../static/images/hat.png" name="courses"></a>
+			</li>
+			<li>
+				<a href="#"><img src="../static/images/person.png" class="invert" name="profile"></a>
+			</li>
+			<li>
+				<a href="#"><img src="../static/images/logout.png" class="logout" name="logout"></a>
+			</li>
+		</ul>
+	</nav>
 
-	<div class="btnAddCourse">
-		<input type="submit" name="addcourse" value="Add Course">
+	<div class="content">
+		<div class="header">
+			<h1>Courses</h1>
+		</div>
+		<div class="panel">
+			<div class="title">
+				<h2>Created Courses</h2>
+			</div>
+			<div class="data">
+				<div class="icon">
+					<p>ENG</p>
+				</div>
+				<div class="details">
+					<h4>English Class/Grade 1-Section 1</h4>
+					<h5>Adviser: Ms. Morales </h5>
+				</div>
+				<input type="submit" name="submit" value="View course">
+				<span class="close">&times;</span>
+			</div>
+			<div class="data">
+				<div class="icon">
+					<p>ENG</p>
+				</div>
+				<div class="details">
+					<h4>English Class/Grade 1-Section 3</h4>
+					<h5>Adviser: Ms. Morales </h5>
+				</div>
+				<input type="submit" name="submit" value="View course">
+				<span class="close">&times;</span>
+			</div>
+			<div class="data">
+				<div class="icon">
+					<p>ENG</p>
+				</div>
+				<div class="details">
+					<h4>English Class/Grade 3-Section 2</h4>
+					<h5>Adviser: Ms. Morales </h5>
+				</div>
+				<input type="submit" name="submit" value="View course">
+				<span class="close">&times;</span>
+			</div>
+		</div>
+		<div class="panel">
+			<form action="" method="POST">
+				<div class="title">
+					<div class="title">Create new Course</div>
+				</div>
+				<label>Course Name</label>
+				<input type="text" name="course_name"><br>
+				<input type="submit" name="create" value="Create">
+			</form>
+		</div>
 	</div>
 
 	<script>

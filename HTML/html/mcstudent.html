@@ -1,96 +1,89 @@
 <html>
 
 <head>
-	<title>Manage Course - Student</title>
-	<link rel="stylesheet" type="text/css" href="./styles.css">
-	<link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
+    <title>Manage Course - Student</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 
 <body>
-	<nav class="navtab">
-		<div class="logo">
-			<h1>S</h1>
-			<h4>T</h4>
-		</div>
-		<ul class="navigation">
-			<li><a href="#"><img src="../static/images/house.png" class="invert" name="home"></a></li>
-			<li><a href="#"><img src="../static/images/hat.png" name="courses"></a></li>
-			<li><a href="#"><img src="../static/images/person.png" class="invert" name="profile"></a></li>
-			<li><a href="#"><img src="../static/images/logout.png" class="logout" name="logout"></a></li>
-		</ul>
-	</nav>
+    <nav class="navtab">
+        <div class="logo">
+            <h1>S</h1>
+            <h4>T</h4>
+        </div>
+        <ul class="navigation">
+            <li>
+                <a href="#"><img src="../static/images/house.png" class="invert" name="home"></a>
+            </li>
+            <li>
+                <a href="#"><img src="../static/images/hat.png" name="courses"></a>
+            </li>
+            <li>
+                <a href="#"><img src="../static/images/person.png" class="invert" name="profile"></a>
+            </li>
+            <li>
+                <a href="#"><img src="../static/images/logout.png" class="logout" name="logout"></a>
+            </li>
+        </ul>
+    </nav>
 
-	<div class="header">
-		<h1>Courses</h1>
-	</div>
+    <div class="content">
+        <div class="header">
+            <h1>Courses</h1>
+        </div>
+        <div class="panel">
+            <div class="title">
+                <h2>Active Courses</h2>
+            </div>
+            <div class="data">
+                <div class="icon">
+                    <p>ENG</p>
+                </div>
+                <div class="details">
+                    <h4>English Class/Grade 1-Section 1</h4><br>
+                    <h5>Adviser: Ms. Morales </h5>
+                </div>
+                <div class="button">
+                    <input type="submit" name="submit" value="View course">
+                </div>
+            </div>
+            <div class="data">
+                <div class="icon">
+                    <p>ENG</p>
+                </div>
+                <div class="details">
+                    <h4>English Class/Grade 1-Section 1</h4><br>
+                    <h5>Adviser: Ms. Morales </h5>
+                </div>
+                <div class="button">
+                    <input type="submit" name="submit" value="View course">
+                </div>
+            </div>
+        </div>
 
-	<div class="content">
-		<div class="panel_1">
-			<div class="title">
-				<h2>Active Courses</h2>
-			</div>
-			<div class="course">
-				<div class="icon">
-					<p>ENG</p>
-				</div>
-				<div class="details">
-					<h4>English Class/Grade 1-Section 1</h4>
-					<h5>Adviser: Ms. Morales </h5>
-				</div>
-				<div class="button">
-					<input type="submit" name="submit" value="View course">
-				</div>
-			</div>
-			<div class="course">
-				<div class="icon">
-					<p>ENG</p>
-				</div>
-				<div class="details">
-					<h4>English Class/Grade 1-Section 1</h4>
-					<h5>Adviser: Ms. Morales </h5>
-				</div>
-				<div class="button">
-					<input type="submit" name="submit" value="View course">
-				</div>
-			</div>
-		</div>
+        <div class="panel">
+            <div class="title">
+                <h2>Join Course</h2>
+            </div>
 
-		<div class="panel_2">
-			<div class="title">
-				<h2>Join Course</h2>
-			</div>
+            <div id="course_code">
+                <input type="text" name="joincode[]" id="input_1" maxlength="1">
+                <input type="text" name="joincode[]" id="input_2" maxlength="1">
+                <input type="text" name="joincode[]" id="input_3" maxlength="1">
+                <input type="text" name="joincode[]" id="input_4" maxlength="1">
+                <input type="text" name="joincode[]" id="input_5" maxlength="1">
+            </div>
 
-			<div class="course_code">
+            <div>
+                <input type="submit" name="submit" value="Join">
+            </div>
 
-				<div class="txtJoinCourse1">
-					<input type="text" name="joincode1" maxlength="1">
-				</div>
-
-				<div class="txtJoinCourse2">
-					<input type="text" name="joincode2" maxlength="1">
-				</div>
-
-				<div class="txtJoinCourse3">
-					<input type="text" name="joincode3" maxlength="1">
-				</div>
-
-				<div class="txtJoinCourse4">
-					<input type="text" name="joincode4" maxlength="1">
-				</div>
-
-				<div class="txtJoinCourse5">
-					<input type="text" name="joincode5" maxlength="1">
-				</div>
-
-			</div>
-
-				<div class="JoinButton">
-					<input type="submit" name="submit" value="Join">
-				</div>
-
-		</div>
+        </div>
 
 
-	</div>
+    </div>
+    <script src="../scripts/mcstudent.js"></script>
 </body>
 
 </html>

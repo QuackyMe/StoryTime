@@ -2,65 +2,87 @@
 
 <head>
 	<title>Manage Course - Teacher</title>
-	<link rel="stylesheet" type="text/css" href="../styles/mcteacher.css">
+	<link rel="stylesheet" type="text/css" href="./styles.css">
 	<link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
 
 <body>
-	<div class="navtab">
-		<font color=white>
+	<nav class="navtab">
+		<div class="logo">
 			<h1>S</h1>
-			<h2>T</h2>
-			<a href="main.html">
-				<img src="../static/images/house.png" class="house" name="home"></a>
-			<a href="#">
-				<img src="../static/images/hat.png" class="hat" name="courses"></a>
-			<a href="#">
-				<img src="../static/images/person.jpg" class="person" name="profile"></a>
-			<a href="#">
-				<img src="../static/images/mail.png" class="mail" name="mail"></a>
-			<a href="#">
-				<img src="../static/images/setting.png" class="settings" name="settings"></a>
-			<a href="index.html">
-				<img src="../static/images/logout.png" class="logout" name="logout"></a>
-	</div>
-	<div class="header">
-		<font color="black">
-			<h1>Courses</h1>
-	</div>
-	<div class="label1">
-		<h2>Created Courses</h2>
-	</div>
-	<div class="label2">
-		<h2>Posted Announcement</h2>
-	</div>
-	<div class="act1">
-		<img src="../static/images/eng.jpeg" class="eng" name="eng">
-		<h4>English Class/Grade 1-Section 1</h4>
-		<h5>Adviser: Ms. Morales </h5>
-		<input type="submit" name="submit" value="View course">
-	</div>
-	<div class="act2">
-		<img src="../static/images/eng.jpeg" class="eng" name="eng">
-		<h4>English Class/Grade 1-Section 3</h4>
-		<h5>Adviser: Ms. Morales </h5>
-		<input type="submit" name="submit" value="View course">
-	</div>
-	<div class="act3">
-		<img src="../static/images/eng.jpeg" class="eng" name="eng">
-		<h4>English Class/Grade 3-Section 2</h4>
-		<h5>Adviser: Ms. Morales </h5>
-		<input type="submit" name="submit" value="View course">
-	</div>
+			<h4>T</h4>
+		</div>
+		<ul class="navigation">
+			<li>
+				<a href="#"><img src="../static/images/house.png" class="invert" name="home"></a>
+			</li>
+			<li>
+				<a href="#"><img src="../static/images/hat.png" name="courses"></a>
+			</li>
+			<li>
+				<a href="#"><img src="../static/images/person.png" class="invert" name="profile"></a>
+			</li>
+			<li>
+				<a href="#"><img src="../static/images/logout.png" class="logout" name="logout"></a>
+			</li>
+		</ul>
+	</nav>
 
-	<div class="anoun1">
-		<h2>Do page 22-25</h2>
-		<h4>Exercise A, #1-5</h4>
-		<h6>Sent: June XX, 00:00AM</h6>
-	</div>
-	<div class="anoun2">
-		<h2>Be ready for quiz on thursday</h2>
-		<h4>Study past, present, and future tense</h4>
-		<h6>Sent: June XX, 00:00AM</h6>
+	<div class="content">
+		<div class="header">
+			<h1>Courses</h1>
+		</div>
+		<div class="panel">
+			<div class="title">
+				<h2>Created Courses</h2>
+			</div>
+			<div class="data">
+				<div class="details">
+					<h4>English Class/Grade 1-Section 1</h4><br>
+					<h5>Adviser: Ms. Morales </h5>
+				</div>
+				<input type="submit" name="submit" value="View course">
+			</div>
+			<div class="data">
+				<div class="details">
+					<h4>English Class/Grade 1-Section 3</h4><br>
+					<h5>Adviser: Ms. Morales </h5>
+				</div>
+				<input type="submit" name="submit" value="View course">
+			</div>
+			<div class="data">
+				<div class="details">
+					<h4>English Class/Grade 3-Section 2</h4><br>
+					<h5>Adviser: Ms. Morales </h5>
+				</div>
+				<input type="submit" name="submit" value="View course">
+			</div>
+		</div>
+
+		<div class="panel">
+			<div class="title">
+				<h2>Posted Announcement</h2>
+			</div>
+
+			<div class="data">
+				<div class="details">
+					<h4>Do page 22-25</h4>
+						<h5>Exercise A, #1-5</h5>
+				</div>
+				<div class="item_date">
+					<h6>Sent: June XX, 00:00AM</h6>
+				</div>
+			</div>
+			<div class="data">
+				<div class="details">
+					<h4>Be ready for quiz on thursday</h4>
+						<h5>Study past, present, and future tense</h5>
+					
+				</div>
+				<div class="item_date">
+					<h6>Sent: June XX, 00:00AM</h6>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 
