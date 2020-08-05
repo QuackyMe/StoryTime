@@ -6,7 +6,8 @@
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/styles.css')}}">
     <link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    {% endblock %}
+	{% endblock %}
+</head>
 
 <body>
     <nav class="navtab">
@@ -16,16 +17,16 @@
 		</div>
 		<ul class="navigation">
 			<li>
-				<a href="#"><img src="../static/images/house.png" class="invert" name="home"></a>
+				<a href="#"><img src="{{url_for('static', filename='images/house.png')}}" class="invert" name="home"></a>
 			</li>
 			<li>
-				<a href="#"><img src="../static/images/hat.png" name="courses"></a>
+				<a href="#"><img src="{{url_for('static', filename='images/hat.png')}}" name="courses"></a>
 			</li>
 			<li>
-				<a href="#"><img src="../static/images/person.png" class="invert" name="profile"></a>
+				<a href="#"><img src="{{url_for('static', filename='images/person.png')}}" class="invert" name="profile"></a>
 			</li>
 			<li>
-				<a href="/logout"><img src="../static/images/logout.png" class="logout" name="logout"></a>
+				<a href="/logout"><img src="{{url_for('static', filename='images/logout.png')}}" class="logout" name="logout"></a>
 			</li>
 		</ul>
 	</nav>
@@ -34,6 +35,5 @@
         {% endblock %}
     </div>
 </body>
-</head>
 
 </html>

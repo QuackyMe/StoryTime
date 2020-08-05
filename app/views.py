@@ -2,7 +2,7 @@ from app import app, db
 from flask import request, render_template, redirect, session, url_for
 from .models import Account, Course, Member, Announcement, Question, Activity, Choice
 from .controller.randomGenerator import generate_alphanumeric
-from .model_controller import student_courses, class_members, get_course_id, add_announcement
+from .model_controller import student_courses, class_members, get_course_id
 
 
 # Default Route
@@ -114,12 +114,14 @@ def submit_create_course():
 # Join Handler
 @app.route('/course/join/submit', methods=['POST'])
 def add_member():
-    join_code = request.form['join_code']
+    join_code = request.form.getlist('joincode[]')
+    join_code = ''.join(join_code).upper()
     room = Course.query.filter_by(code=join_code).first()
     student_code = session["acc_id"]
-    join_code = ''.join(join_code)
+
+    print(join_code)
     if room is None:
-        return render_template('mc_student_test.html', message='Course does not exist')
+        return render_template('mc_student.html', message='Course does not exist')
     elif Member.query.filter_by(member_id=student_code).first() is not None:
         return render_template('mc_student.html', message='Already Joined')
     elif session['acc_type'] != "student":
@@ -132,13 +134,20 @@ def add_member():
 
 
 # Course Room Page
-@app.route('/manage-course/code=<course_code>/')
+@app.route('/manage-course/code=<course_code>/', methods=['POST'])
 def course_room(course_code):
     print(course_code)
     students = class_members(course_code)
     announcements = Announcement.query.filter_by(
         room_id=get_course_id(course_code)).all()
-    return render_template('cr_student.html', students=students, announcements=announcements)
+
+    num_students = len(students)
+
+    #   return render_template('cr_student.html', students=students, announcements=announcements)
+    if session['acc_type'] == "student":
+        return render_template('cr_student.html', students=students, announcements=announcements, course_code=course_code, num_students=num_students)
+    else:
+        return render_template('cr_teacher.html', students=students, announcements=announcements, course_code=course_code, num_students=num_students)
 
 
 # Create Announcement Page
@@ -150,12 +159,19 @@ def announcement(course_code):
 # Create Announcement Handler
 @app.route('/manage-course/code=<course_code>/announcement/create', methods=['POST'])
 def create_announcement(course_code):
-    add_announcement(course_code)
-    return render_template('create_announcement.html', message='Success')
+    print("COURSE CODE: " + str(course_code))
+    course = Course.query.filter_by(code=course_code).first()
+    title = request.form['title']
+    content = request.form['content']
+
+    data = Announcement(course.id, title, content)
+    db.session.add(data)
+    db.session.commit()
+    return render_template('cr_teacher.html', announcement_message='Success')
 
 
 # Create Activity Page
-@app.route('/manage-course/code=<course_code>/create-activity/')
+@app.route('/manage-course/code=<course_code>/create-activity/', methods=['POST'])
 def activity(course_code):
     Question.query.delete()
     Choice.query.delete()

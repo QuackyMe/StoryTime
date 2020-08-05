@@ -2,7 +2,7 @@
 
 <head>
 	<title>Course Room</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="../../app/static/styles/styles.css">
 	<link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
 
 <body>
@@ -32,70 +32,12 @@
 			<h1>Course</h1>
 		</div>
 
+		<!-- List of Activities -->
 		<div class="panel">
-			<div class="title_right">
-				<h5>Students: 3</h5>
-			</div>
-			<div class="title">
-				<h2>Students</h2>
-			</div>
-			
-
-			<div class="data">
-				<div class="details">
-					<h4>Baclig, James Eric</h4>
-				</div>
-				<span class="close">&times;</span>
-			</div>
-			<div class="data">
-				<div class="details">
-					<h4>Capanas, Carlo John</h4>
-				</div>
-				<span class="close">&times;</span>
-			</div>
-
-			<div class="data">
-				<div class="details">
-					<h4>Ferrer, Kyle</h4>
-				</div>
-				<span class="close">&times;</span>
-			</div>
-		</div>
-		<div class="panel">
-			<div class="title_right">
-				<button>Post Announement</button>
-			</div>
-			<div class="title">
-				<h2>Announcements</h2>
-			</div>
-			<div class="data">
-				<div class="details">
-					<h4>Do page 22-25</h2>
-						<h5>Exercise A, #1-5
-					</h4>
-				</div>
-				<div class="item_date">
-					<h6>Sent: June XX, 00:00AM</h6>
-				</div>
-			</div>
-			<div class="data">
-				<div class="details">
-					<h4>Be ready for quiz on thursday</h2>
-						<h5>Study past, present, and future tense
-					</h4>
-				</div>
-				<div class="item_date">
-					<h6>Sent: June XX, 00:00AM</h6>
-				</div>
-			</div>
-		</div>
-		<div class="panel">
-			<div class="title_right">
-				<button>Add Activity</button>
-			</div>
 			<div class="title">
 				<h2>Activities</h2>
 			</div>
+
 			<div class="title">
 				On-Going Activities
 			</div>
@@ -135,8 +77,69 @@
 					<h6>Due Date: XX/XX/XX 00:00AM</h6>
 				</div>
 			</div>
+			<form action="/manage-course/code=<course_code>/create-activity/" method="POST">
+				<input class="link_button" type="submit" value="Create an Activity">
+			</form>
 		</div>
 
+		<!-- List of Students -->
+		<div class="panel">
+			<div class="title">
+				<h2>Students</h2>
+			</div>
+
+			{% for student in students %}
+			<div class="data">
+				<div class="details">
+					<h4>{{student.name}}</h4>
+				</div>
+			</div>
+			{% endfor %}
+
+			<!-- Returns Number of Students to Database -->
+			<div class="title_right">
+				<h5>Students: 3</h5>
+			</div>
+		</div>
+
+		<!-- List of Announcements -->
+		<div class="panel">
+			<div class="title_right">
+			</div>
+			<div class="title">
+				<h2>Announcements</h2>
+			</div>
+			{% for announcement in announcements %}
+			<div class="data">
+				<div class="details">
+					<h4>{{announcement.title}}</h4>
+					<h5>{{announcement.message}}</h5>
+				</div>
+				<div class="item_date">
+					<h6>Sent: June XX, 00:00AM</h6>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+
+		<!-- Create new Announcement -->
+		<div class="panel">
+			<div class="title">
+				<h2>Post an Announement</h2>
+			</div>
+			<form action="/manage-course/code={{course_code}}/announcement/create" method="POST">
+				<h2>Title</h2>
+				<input type="text" name="title" placeholder="Announcement Title">
+				<h2>Message</h2>
+				<input type="text" name="content" placeholder="Announcement">
+				<input type="submit" value="Post an Announcement">
+			</form>
+			{% if announcement_message %}
+			<p class="message">{{ message | safe }}</p>
+			<br>
+			{% endif %}
+		</div>
+		{% endblock %}
 	</div>
 </body>
 </head>

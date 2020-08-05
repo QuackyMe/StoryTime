@@ -44,15 +44,4 @@ def class_members(course_code):
     return students
 
 
-def add_announcement(course_code):
-    print("COURSE CODE: " + str(course_code))
-    course = Course.query.filter_by(code=course_code).first()
-    title = request.form['title']
-    content = request.form['content']
-
-    data = Announcement(course.id, title, content)
-    db.session.add(data)
-    db.session.commit()
-
-
 # def login_validation():
