@@ -11,9 +11,9 @@
     <h1>Add Activity</h1>
     <form action="/course/code={{course_code}}/create-activity/create" method="POST" id="activity_form">
         <div id='questions'>
-            <div id="template" class="hidden">
+            <div id="template" class="hidden panel">
                 <!-- Question Text Box -->
-                <h2 id="q_number">Question #: </h2> <input type="text" name="question[]">
+                <h2 id="q_number" class="title">Question #: </h2> <input type="text" name="question[]">
                 <!-- Select Box -->
                 <h2>Type <select name="type[]" id="q_type">
                         <option value="speech-to-text">Multiple Choice</option>

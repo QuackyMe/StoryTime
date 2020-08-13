@@ -1,0 +1,96 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: white;
+	background-size: cover;
+	background-position: center;
+}
+
+.content{
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+.header
+{
+	position: absolute;
+	width: 1120px;
+	height: 140px;
+	left: 500px;
+	top: 75px;
+	background-color: #F5F5F7;
+	color: #fff;
+	box-sizing: border-box;
+	padding: 30px 50px;
+	font-family: Baloo Bhai;
+	border-radius: 25px;
+}
+
+.header h1
+{
+    position: absolute;
+}
+
+
+.label1
+{
+    position: absolute;
+    left: 530px;
+    top: 230px;
+    font-family: Baloo Bhai;
+}
+
+
+.label2
+{
+    position: absolute;
+    left: 530px;
+    top: 360px;
+    font-family: Baloo Bhai;
+}
+
+
+.title1 input[type=text]
+{
+    position: absolute;
+    left: 510px;
+    top: 300px;
+    right: 400px;
+    bottom: 630px;
+    font-family: Baloo Bhai;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    width: 700px;
+}
+
+.details1 input[type=text]
+{
+    position: absolute;
+    left: 510px;
+    top: 420px;
+    right: 400px;
+    bottom: 630px;
+    font-family: Baloo Bhai;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    width: 700px;
+    height: 150px;
+}
+
+.post1 input[type=submit]
+{
+    position: absolute;
+    left: 1110px;
+    top: 600px;
+    border-radius: 25px;
+    outline: none;
+    width: 100px;
+    height: 35px;
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}

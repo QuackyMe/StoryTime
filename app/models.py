@@ -55,39 +55,53 @@ class Member(db.Model):
 class Announcement(db.Model):
     __tablename__ = 'Announcement'
     id = db.Column(db.Integer, primary_key=True)
-    room_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
+    course_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
     title = db.Column(db.String(90))
     message = db.Column(db.String(300))
     date = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def __init__(self, room_id, title, message):
-        self.room_id = room_id
+    def __init__(self, course_id, title, message):
+        self.course_id = course_id
         self.title = title
         self.message = message
+
+
+class Material(db.Model):
+    __tablename__ = 'Material'
+    id = db.Column(db.Integer, primary_key=True)
+    course_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
+    title = db.Column(db.String(90))
+    content = db.Column(db.String(300))
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __init__(self, course_id, title, content):
+        self.course_id = course_id
+        self.title = title
+        self.content = content
 
 
 class Activity(db.Model):
     __tablename__ = 'Activity'
     id = db.Column(db.Integer, primary_key=True)
-    room_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
+    course_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
     date = db.Column(db.DateTime, default=datetime.utcnow)
     deadline = db.Column(db.DateTime, nullable=True)
 
-    def __init__(self, room_id, deadline):
-        self.room_id = room_id
+    def __init__(self, course_id, deadline):
+        self.course_id = course_id
         self.deadline = deadline
 
 
 class Grade(db.Model):
     __tablename__ = 'Grade'
     id = db.Column(db.Integer, primary_key=True)
-    room_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
+    course_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
     activity_id = db.Column(db.Integer, db.ForeignKey('Activity.id'))
     date = db.Column(db.DateTime, default=datetime.utcnow)
     grade = db.Column(db.String(5))
 
-    def __init__(self, room_id, activity_id, grade):
-        self.room_id = room_id
+    def __init__(self, course_id, activity_id, grade):
+        self.course_id = course_id
         self.activity_id = activity_id
         self.grade = grade
 

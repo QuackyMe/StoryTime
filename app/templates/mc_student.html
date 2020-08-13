@@ -22,7 +22,7 @@ Manage Course
 			<h5>Adviser: {{ course.host }} </h5>
 		</div>
 		<div class="button">
-			<form action="/code={{course.code}}" method="POST">
+			<form action="{{ url_for('course', course_code=course.code) }}" method="POST">
 				<input type="submit" name="submit" value="View course">
 			</form>
 		</div>
@@ -35,7 +35,7 @@ Manage Course
 		<h2>Join Course</h2>
 	</div>
 
-	<form action="/course/join/submit" method="POST">
+	<form action="{{ url_for('add_member') }}" method="POST">
 		<div id="course_code">
 			<input type="text" name="joincode[]" id="input_1" maxlength="1">
 			<input type="text" name="joincode[]" id="input_2" maxlength="1">
@@ -48,15 +48,14 @@ Manage Course
 			<input type="submit" name="submit" value="Join">
 		</div>
 	</form>
-
+	{% if message %}
+<p class="error">{{ message | safe }}</p>
+{% endif %}
 </div>
-
 
 </div>
 <script src="{{url_for('static', filename='scripts/mcstudent.js')}}"></script>
 
-{% if message %}
-<p class="error">{{ message | safe }}</p>
-{% endif %}
+
 
 {% endblock %}

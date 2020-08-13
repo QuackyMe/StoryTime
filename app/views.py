@@ -1,17 +1,19 @@
 from app import app, db
 from flask import request, render_template, redirect, session, url_for
-from .models import Account, Course, Member, Announcement, Question, Activity, Choice
+from .models import Account, Course, Member, Announcement, Question, Activity, Choice, Material
 from .controller.randomGenerator import generate_alphanumeric
 from .model_controller import student_courses, class_members, get_course_id
+import urllib.parse
 
 
 # Default Route
 @app.route('/')
 def to_home():
+    print(url_for('manage_course'))
     return redirect(url_for('login'))
 
 
-# Login Page
+# Login Page Render
 @app.route('/login/')
 def login():
     return render_template('login.html')
@@ -41,7 +43,7 @@ def login_process():
         return redirect(url_for('manage_course'))
 
 
-# Register Page
+# Register Page Render
 @app.route('/register/')
 def register_page():
     return render_template('register.html')
@@ -65,18 +67,18 @@ def register():
         data = Account(username, password, type)
         db.session.add(data)
         db.session.commit()
-        return redirect(url_for('login'))
+        return redirect(url_for('login', message='Registration Successful'))
 
 
 # Logout Handler
-@app.route('/logout', methods=['POST'])
+@app.route('/logout')
 def logout():
     session.pop('acc_id', None)
     return redirect(url_for('login'))
 
 
-# Display Course Page
-@app.route('/manage-course/')
+# Display Course Page Render
+@app.route('/manage_course/')
 def manage_course():
     courses = student_courses(session['acc_id'])
     if session['acc_type'] == "student":
@@ -88,16 +90,9 @@ def manage_course():
         return render_template('mc_teacher.html', courses=courses)
 
 
-# Create Course Page
-# @app.route('/course/create')
-# def create_course():
-#     print('account2: ' + str(session["acc_id"]))
-#     return render_template('mc_teacher.html')
-
-
 # Create Course Handler
 @app.route('/course/create/submit', methods=['POST'])
-def submit_create_course():
+def create_course():
     course_name = request.form['course_name']
     host_id = session["acc_id"]
 
@@ -108,7 +103,7 @@ def submit_create_course():
         data = Course(host_id, course_name, code)
         db.session.add(data)
         db.session.commit()
-        return render_template('mc_teacher.html', error='Success')
+        return redirect(urllib.parse.unquote(url_for('course', course_code=code)))
 
 
 # Join Handler
@@ -116,50 +111,72 @@ def submit_create_course():
 def add_member():
     join_code = request.form.getlist('joincode[]')
     join_code = ''.join(join_code).upper()
-    room = Course.query.filter_by(code=join_code).first()
+    course = Course.query.filter_by(code=join_code).first()
     student_code = session["acc_id"]
 
     print(join_code)
-    if room is None:
+    if course is None:
         return render_template('mc_student.html', message='Course does not exist')
-    elif Member.query.filter_by(member_id=student_code).first() is not None:
+    elif Member.query.filter_by(member_id=student_code).filter_by(course_id=get_course_id(join_code)).first() is not None:
         return render_template('mc_student.html', message='Already Joined')
     elif session['acc_type'] != "student":
         return render_template('mc_student.html', message='Only students can join')
     else:
-        data = Member(student_code, room.id)
+        data = Member(student_code, course.id)
         db.session.add(data)
         db.session.commit()
-        return render_template('mc_student.html', message='Sucessfully Joined Course')
+        return redirect(urllib.parse.unquote(url_for('course', course_code=course.code)))
 
 
-# Course Room Page
-@app.route('/manage-course/code=<course_code>/', methods=['POST'])
-def course_room(course_code):
+# Course Page Render
+@app.route('/manage_course/course/<course_code>/', methods=['POST'])
+def course(course_code):
     print(course_code)
     students = class_members(course_code)
     announcements = Announcement.query.filter_by(
-        room_id=get_course_id(course_code)).all()
+        course_id=get_course_id(course_code)).all()
+    materials = Material.query.filter_by(
+        course_id=get_course_id(course_code)).all()
 
     num_students = len(students)
 
-    #   return render_template('cr_student.html', students=students, announcements=announcements)
     if session['acc_type'] == "student":
-        return render_template('cr_student.html', students=students, announcements=announcements, course_code=course_code, num_students=num_students)
+        return render_template('cr_student.html', students=students, announcements=announcements, course_code=course_code, num_students=num_students, materials=materials)
     else:
-        return render_template('cr_teacher.html', students=students, announcements=announcements, course_code=course_code, num_students=num_students)
+        return render_template('cr_teacher.html', students=students, announcements=announcements, course_code=course_code, num_students=num_students, materials=materials)
 
 
-# Create Announcement Page
-@app.route('/manage-course/code=<course_code>/announcement')
-def announcement(course_code):
-    return render_template('add_announcement.html', course_code=course_code)
+# Create Learning Material Render
+@app.route('/manage-course/course/<course_code>/material/create')
+def material(course_code):
+    return render_template('add_material.html', course_code=course_code)
+
+
+# Create Learning Material Handler
+@app.route('/create-material')
+def create_material(course_code):
+    title = request.form['title']
+    content = request.form['content']
+    course = Course.query.filter_by(code=course_code).first()
+
+    data = Material(course.id, title, content)
+    db.session.add(data)
+    db.session.commit()
+
+    return redirect(urllib.parse.unquote(url_for('course', course_code=course_code)))
+
+
+# Read Learning Material Render
+@app.route('/manage-course/course/<course_code>/material/<material_id>')
+def read_material(course_code, material_id):
+    material = Material.query.filter_by(id=material_id)
+    return render_template('add_material.html', material=material)
 
 
 # Create Announcement Handler
-@app.route('/manage-course/code=<course_code>/announcement/create', methods=['POST'])
+@app.route('/create-announcement', methods=['POST'])
 def create_announcement(course_code):
-    print("COURSE CODE: " + str(course_code))
+    print(f"COURSE CODE: {str(course_code)}")
     course = Course.query.filter_by(code=course_code).first()
     title = request.form['title']
     content = request.form['content']
@@ -167,11 +184,11 @@ def create_announcement(course_code):
     data = Announcement(course.id, title, content)
     db.session.add(data)
     db.session.commit()
-    return render_template('cr_teacher.html', announcement_message='Success')
+    return render_template('cr_teacher.html', message='Successfully posted an announcement')
 
 
 # Create Activity Page
-@app.route('/manage-course/code=<course_code>/create-activity/', methods=['POST'])
+@app.route('/manage-course/course/<course_code>/create-activity/', methods=['POST'])
 def activity(course_code):
     Question.query.delete()
     Choice.query.delete()
@@ -181,14 +198,15 @@ def activity(course_code):
 
 
 # Create Activity Handler
-@app.route('/manage-course/code=<course_code>/create-activity/create', methods=['POST'])
+@app.route('/manage-course/course/<course_code>/create-activity/create', methods=['POST'])
 def add_activity(course_code):
     question = request.form.getlist('question[]')
     question_type = request.form.getlist('type[]')
     question_ans = request.form.getlist('answer[]')
 
     print(f"question {question} - answer {question_ans}")
-    data = Activity(get_course_id(course_code), None)  # Replace with Deadline input
+    # Replace with Deadline input
+    data = Activity(get_course_id(course_code), None)
     db.session.add(data)
     db.session.commit()
 
@@ -196,8 +214,10 @@ def add_activity(course_code):
     print(activity.id)
     question_list = []
     for i in range(1, len(question)):
-        print(f"TEEEEEEEEEEEES{activity.id}, {question_type[i]}, {question[i]}, {question_ans[i]}")
-        question_list.append(Question(activity.id, i, question_type[i], question[i], question_ans[i]))
+        print(
+            f"TEEEEEEEEEEEES{activity.id}, {question_type[i]}, {question[i]}, {question_ans[i]}")
+        question_list.append(
+            Question(activity.id, i, question_type[i], question[i], question_ans[i]))
     db.session.bulk_save_objects(question_list)
     db.session.commit()
     choice_list = []
@@ -205,7 +225,8 @@ def add_activity(course_code):
     for i in range(1, len(question)):
         choices = request.form.getlist(f'choice_{str(i)}')
         for j in range(len(choices)):
-            ques = Question.query.filter_by(activity_id=activity.id).filter_by(question_number=i).first()
+            ques = Question.query.filter_by(
+                activity_id=activity.id).filter_by(question_number=i).first()
             choice_list.append(Choice(ques.question_number, choices[i - 1]))
     db.session.bulk_save_objects(choice_list)
     db.session.commit()
@@ -227,5 +248,5 @@ def test_page():
         print(item)
     return str(li)
 
-# course/code=AAAAA/create-activity/
+# course/#=AAAAA/create-activity/
 # nextval('"Question_id_seq"'::regclass)

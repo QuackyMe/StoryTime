@@ -21,7 +21,7 @@ Manage Course
 		<div class="details">
 			<h4>{{course.name}}</h4>
 		</div>
-		<form action="code={{course.code}}/" method="POST">
+		<form action="{{ url_for('course', course_code=course.code) }}" method="POST">
 			<input type="submit" name="submit" value="View course">
 		</form>
 		<span class="close">&times;</span>
@@ -31,7 +31,7 @@ Manage Course
 <!-- Create New Course -->
 </div>
 <div class="panel">
-	<form action="/course/create/submit" method="POST">
+	<form action="{{ url_for('create_course') }}" method="POST">
 		<div class="title">
 			<div class="title">Create new Course</div>
 		</div>
