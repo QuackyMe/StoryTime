@@ -57,12 +57,12 @@ if (isChrome) {
 
 // Speak
 const speak = () => {
-  media.src="./img/stop.png"
+  media.src="/static/images/stop.png"
   // Check if speaking
   if (synth.speaking) {
     console.log('Speech Canceled');
     synth.cancel();
-    media.src="./img/play.png"
+    media.src="/static/images/play.png"
     return;
   }
   if (textInput.value !== '') {
@@ -72,6 +72,7 @@ const speak = () => {
     // Speak end
     speakText.onend = e => {
       console.log('Done speaking...');
+      media.src="/static/images/play.png"
     };
 
     // Speak error
@@ -86,7 +87,9 @@ const speak = () => {
 
     // Loop through voices
     voices.forEach(voice => {
-      if (voice.name == 'Microsoft Zira Desktop - English (United States)') {
+      console.log(voice.name);
+      if ((voice.name).includes('Zira')) {
+        console.log('Voice Found');
         speakText.voice = voice;
       }
     });

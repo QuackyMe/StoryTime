@@ -10,13 +10,13 @@ Create an Announcement
 </div>
 
 <div class="panel">
-    <form action="/"></form>
-    <h2>Title</h2>
-    <input type="text" id="tdetails" name="title">
-    
-    <h2>Details</h2>
-    <textarea name="content" id="" cols="60" rows="10"></textarea>
-    <div class="post1">
+    <form action="{{ url_for('create_material', course_code=course_code) }}" method="POST">
+        <h2>Title</h2>
+        <input type="text" id="tdetails" name="title">
+
+        <h2>Details</h2>
+        <textarea name="content" id="" cols="60" rows="10"></textarea>
         <input type="submit" name="post" value="Post">
-    </div>
-{{% endblock %}}
+    </form>
+</div>
+{% endblock %}

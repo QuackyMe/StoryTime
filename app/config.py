@@ -2,6 +2,7 @@ env = 'dev'
 if env == 'dev':
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:admin@localhost/StoryTime'
+    #  SQLALCHEMY_DATABASE_URI = 'sqlite:///test'
 
 else:
     DEBUG = False

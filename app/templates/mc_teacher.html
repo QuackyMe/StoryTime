@@ -21,7 +21,7 @@ Manage Course
 		<div class="details">
 			<h4>{{course.name}}</h4>
 		</div>
-		<form action="{{ url_for('course', course_code=course.code) }}" method="POST">
+		<form action="{{ url_for('course', course_code=course.code) }}">
 			<input type="submit" name="submit" value="View course">
 		</form>
 		<span class="close">&times;</span>

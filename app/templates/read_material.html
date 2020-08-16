@@ -10,8 +10,8 @@ Learning Material
         <h3>{{material.content}}</h3>
     </div>
 
-    <input id="media" type="image" src="{{url_for('static', 'images/play.png')}}">
+    <input id="media" type="image" src="{{ url_for('static', filename='images/play.png') }}">
 </form>
 
-<script src="{{url_for('static', 'scripts/read_material.js')}}"></script>
-{{% endblock %}}
+<script type="text/javascript" src="{{ url_for('static', filename='scripts/read_material.js') }}"></script>
+{% endblock %}

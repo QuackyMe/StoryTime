@@ -333,3 +333,8 @@
     font-size: 50px;
     text-transform: uppercase;
   }
+
+  #media{
+    height: 100px;
+    width: 100px;
+  }

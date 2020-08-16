@@ -3,7 +3,6 @@ from flask import request, render_template, redirect, session, url_for
 from .models import Account, Course, Member, Announcement, Question, Activity, Choice, Material
 from .controller.randomGenerator import generate_alphanumeric
 from .model_controller import student_courses, class_members, get_course_id
-import urllib.parse
 
 
 # Default Route
@@ -78,7 +77,7 @@ def logout():
 
 
 # Display Course Page Render
-@app.route('/manage_course/')
+@app.route('/course/')
 def manage_course():
     courses = student_courses(session['acc_id'])
     if session['acc_type'] == "student":
@@ -88,6 +87,24 @@ def manage_course():
         for course in courses:
             print(str(course))
         return render_template('mc_teacher.html', courses=courses)
+
+
+# Course Page Render
+@app.route('/course/<course_code>/')
+def course(course_code):
+    print(course_code)
+    students = class_members(course_code)
+    announcements = Announcement.query.filter_by(
+        course_id=get_course_id(course_code)).all()
+    materials = Material.query.filter_by(
+        course_id=get_course_id(course_code)).all()
+
+    num_students = len(students)
+
+    if session['acc_type'] == "student":
+        return render_template('cr_student.html', students=students, announcements=announcements, course_code=course_code, num_students=num_students, materials=materials)
+    else:
+        return render_template('cr_teacher.html', students=students, announcements=announcements, course_code=course_code, num_students=num_students, materials=materials)
 
 
 # Create Course Handler
@@ -103,7 +120,7 @@ def create_course():
         data = Course(host_id, course_name, code)
         db.session.add(data)
         db.session.commit()
-        return redirect(urllib.parse.unquote(url_for('course', course_code=code)))
+        return redirect(url_for('course', course_code=code))
 
 
 # Join Handler
@@ -125,36 +142,20 @@ def add_member():
         data = Member(student_code, course.id)
         db.session.add(data)
         db.session.commit()
-        return redirect(urllib.parse.unquote(url_for('course', course_code=course.code)))
-
-
-# Course Page Render
-@app.route('/manage_course/course/<course_code>/', methods=['POST'])
-def course(course_code):
-    print(course_code)
-    students = class_members(course_code)
-    announcements = Announcement.query.filter_by(
-        course_id=get_course_id(course_code)).all()
-    materials = Material.query.filter_by(
-        course_id=get_course_id(course_code)).all()
-
-    num_students = len(students)
-
-    if session['acc_type'] == "student":
-        return render_template('cr_student.html', students=students, announcements=announcements, course_code=course_code, num_students=num_students, materials=materials)
-    else:
-        return render_template('cr_teacher.html', students=students, announcements=announcements, course_code=course_code, num_students=num_students, materials=materials)
+        return redirect(url_for('manage_course'))
 
 
 # Create Learning Material Render
 @app.route('/manage-course/course/<course_code>/material/create')
 def material(course_code):
+    print(f'COURSE CODE: {course_code}')
     return render_template('add_material.html', course_code=course_code)
 
 
 # Create Learning Material Handler
-@app.route('/create-material')
+@app.route('/create-material/<course_code>', methods=['POST'])
 def create_material(course_code):
+    print(f'COURSE CODE: {course_code}')
     title = request.form['title']
     content = request.form['content']
     course = Course.query.filter_by(code=course_code).first()
@@ -163,18 +164,18 @@ def create_material(course_code):
     db.session.add(data)
     db.session.commit()
 
-    return redirect(urllib.parse.unquote(url_for('course', course_code=course_code)))
+    return redirect(url_for('course', course_code=course_code))
 
 
 # Read Learning Material Render
-@app.route('/manage-course/course/<course_code>/material/<material_id>')
+@app.route('/manage-course/course/<course_code>/material/view/<material_id>', methods=['POST'])
 def read_material(course_code, material_id):
-    material = Material.query.filter_by(id=material_id)
-    return render_template('add_material.html', material=material)
+    material = Material.query.filter_by(id=material_id).first()
+    return render_template('read_material.html', material=material)
 
 
 # Create Announcement Handler
-@app.route('/create-announcement', methods=['POST'])
+@app.route('/create-announcement')
 def create_announcement(course_code):
     print(f"COURSE CODE: {str(course_code)}")
     course = Course.query.filter_by(code=course_code).first()
@@ -188,7 +189,7 @@ def create_announcement(course_code):
 
 
 # Create Activity Page
-@app.route('/manage-course/course/<course_code>/create-activity/', methods=['POST'])
+@app.route('/manage-course/course/<course_code>/create-activity/')
 def activity(course_code):
     Question.query.delete()
     Choice.query.delete()
@@ -247,6 +248,3 @@ def test_page():
     for item in li:
         print(item)
     return str(li)
-
-# course/#=AAAAA/create-activity/
-# nextval('"Question_id_seq"'::regclass)

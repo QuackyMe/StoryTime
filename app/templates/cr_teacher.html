@@ -60,7 +60,7 @@ Course Room
         </div>
     </div>
     <div class="button_area">
-        <form action="/manage-course/code=<course_code>/create-activity/" method="POST">
+        <form action="/manage-course/code=<course_code>/create-activity/">
             <input type="submit" value="Create an Activity">
         </form>
     </div>
@@ -108,8 +108,6 @@ Course Room
 
 <!-- List of Learning Materials -->
 <div class="panel">
-    <div class="title_right">
-    </div>
     <div class="title">
         <h2>Learning Materials</h2>
     </div>
@@ -119,18 +117,21 @@ Course Room
             <h4>{{material.title}}</h4>
         </div>
         <div class="button">
-			<form action="{{ url_for('read_material', course_code=course_code, material_id=material.id) }}" method="POST">
-				<input type="submit" name="submit" value="View Material">
-			</form>
+            <form action="{{ url_for('read_material', course_code=course_code, material_id=material.id) }}"
+                method="POST">
+                <input type="submit" name="submit" value="View Material">
+            </form>
+        </div>
         <div class="item_date">
             <h6>Sent: June XX, 00:00AM</h6>
         </div>
     </div>
     {% endfor %}
-
-    <form action="/manage-course/code=<course_code>/material">
-        <input type="submit" value="Create a Learning Material">
-    </form>
+    <div class="button_area">
+        <form action="{{ url_for('material', course_code=course_code ) }}">
+            <input type="submit" value="Create a Learning Material">
+        </form>
+    </div>
 </div>
 
 <!-- Create new Announcement -->
@@ -150,4 +151,5 @@ Course Room
     <br>
     {% endif %}
 </div>
+
 {% endblock %}
