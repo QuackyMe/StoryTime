@@ -15,6 +15,13 @@ class MemberName():
         self.name = name
 
 
+class ActivityModel():
+    def __init__(self, question, answer, choice):
+        self.question = question
+        self.answer = answer
+        self.choice = choice
+
+
 def get_name(account_id):
     return Account.query.filter_by(id=account_id).first().username
 
@@ -44,4 +51,10 @@ def class_members(course_code):
     return students
 
 
-# def login_validation():
+def get_choice(activity_id, question_number):
+    sql = f"""SELECT q.ques, q.answer, c,item FROM "Choice" AS "c"
+    INNER JOIN "Question" AS "q" ON c.question_id = q.id
+    WHERE q.activity_id = {activity_id} AND q.question_number = {question_number};"""
+    query = db.engine.execute(sql)
+    for x in query:
+        print(x)

@@ -19,48 +19,25 @@ Course Room
     <div class="title">
         <h2>Activities</h2>
     </div>
-
+    <!---->
     <div class="title">
         On-Going Activities
     </div>
+    {% for activity in activities %}
     <div class="data">
         <div class="details">
-            <h4>Mary Had a Little Lamb</h4>
-            <h5>Reading </h5>
+            <h4>{{ activity.id }}</h4>
         </div>
-        <input type="submit" name="submit" value="Perform">
+        <form action="{{ url_for('perform_activity', course_code=course_code, activity_id=activity.id, question_number='1') }}">
+            <input type="submit" name="submit" value="Perform">
+        </form>
         <div class="item_date">
             <h6>Due Date: XX/XX/XX 00:00AM</h6>
         </div>
     </div>
-    <div class="title">
-        New Activities
-    </div>
-    <div class="data">
-        <div class="details">
-            <h4>Three Little Pigs</h4>
-            <h5>Reading </h5>
-        </div>
-        <input type="submit" name="submit" value="Try Again">
-        <div class="item_date">
-            <h6>Due Date: XX/XX/XX 00:00AM</h6>
-        </div>
-    </div>
-    <div class="title">
-        <h2>Performed Activities</h2>
-    </div>
-    <div class="data">
-        <div class="details">
-            <h4>Little Red Riding Hood</h4>
-            <h5>Reading </h5>
-        </div>
-        <input type="submit" name="submit" value="Try Again" disabled>
-        <div class="item_date">
-            <h6>Due Date: XX/XX/XX 00:00AM</h6>
-        </div>
-    </div>
+    {% endfor %}
     <div class="button_area">
-        <form action="/manage-course/code=<course_code>/create-activity/">
+        <form action="{{ url_for('activity', course_code=course_code) }}">
             <input type="submit" value="Create an Activity">
         </form>
     </div>

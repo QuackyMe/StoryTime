@@ -9,6 +9,7 @@ questionSection.addEventListener('click', addChoice);
 questionButton.addEventListener('click', addQuestion);
 
 var counter = 0;
+var choice_counter = 0;
 window.onload = addQuestion();
 
 function addChoice(e) {
@@ -17,8 +18,7 @@ function addChoice(e) {
         newLabel.appendChild(document.createTextNode('Choice: '));
 
         var newInput = document.createElement('input');
-        newInput.name = `choice_${e.target.parentElement.id}`;
-
+        newInput.name = `choice_${String(choice_counter)}`;
 
         newLabel.appendChild(newInput)
         e.target.parentElement.insertBefore(newLabel, e.target);
@@ -39,6 +39,8 @@ function addQuestion(e) {
             input[i].value = null;
         }
         questionSection.insertBefore(clone, questionButton);
+
+        choice_counter++;
     }
 }
 

@@ -5,9 +5,9 @@ from datetime import datetime
 class Account(db.Model):
     __tablename__ = 'Account'
     id = db.Column(db.Integer, primary_key=True)
-    type = username = db.Column(db.String(10))
+    type = username = db.Column(db.String(10), nullable=False)
     username = db.Column(db.String(20), unique=True)
-    password = db.Column(db.String(200))
+    password = db.Column(db.String(200), nullable=False)
 
     def __init__(self, username, password, type):
         self.username = username
@@ -56,7 +56,7 @@ class Announcement(db.Model):
     __tablename__ = 'Announcement'
     id = db.Column(db.Integer, primary_key=True)
     course_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
-    title = db.Column(db.String(90))
+    title = db.Column(db.String(90), nullable=False)
     message = db.Column(db.String(300))
     date = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -70,8 +70,8 @@ class Material(db.Model):
     __tablename__ = 'Material'
     id = db.Column(db.Integer, primary_key=True)
     course_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
-    title = db.Column(db.String(90))
-    content = db.Column(db.String(300))
+    title = db.Column(db.String(90), nullable=False)
+    content = db.Column(db.String(300), nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __init__(self, course_id, title, content):
@@ -110,10 +110,10 @@ class Question(db.Model):
     __tablename__ = 'Question'
     id = db.Column(db.Integer, primary_key=True)
     activity_id = db.Column(db.Integer, db.ForeignKey('Activity.id'))
-    question_number = db.Column(db.Integer)
-    type = db.Column(db.String(20))
-    ques = db.Column(db.String(100))
-    answer = db.Column(db.String(50))
+    question_number = db.Column(db.Integer, nullable=False)
+    type = db.Column(db.String(20), nullable=False)
+    ques = db.Column(db.String(100), nullable=False)
+    answer = db.Column(db.String(50), nullable=False)
 
     def __init__(self, activity_id, question_number, type, ques, answer):
         self.activity_id = activity_id
@@ -126,9 +126,9 @@ class Question(db.Model):
 class Choice(db.Model):
     __tablename__ = 'Choice'
     id = db.Column(db.Integer, primary_key=True)
-    question_number = db.Column(db.Integer)
-    item = db.Column(db.String(100))
+    question_id = db.Column(db.Integer, db.ForeignKey('Question.id'), nullable=False)
+    item = db.Column(db.String(100), nullable=False)
 
-    def __init__(self, question_number, item):
-        self.question_number = question_number
+    def __init__(self, question_id, item):
+        self.question_id = question_id
         self.item = item

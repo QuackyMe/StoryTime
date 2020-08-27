@@ -2,14 +2,15 @@ from app import app, db
 from flask import request, render_template, redirect, session, url_for
 from .models import Account, Course, Member, Announcement, Question, Activity, Choice, Material
 from .controller.randomGenerator import generate_alphanumeric
-from .model_controller import student_courses, class_members, get_course_id
+from .model_controller import student_courses, class_members, get_course_id, get_choice
+
+from random import shuffle
 
 
 # Default Route
 @app.route('/')
 def to_home():
-    print(url_for('manage_course'))
-    return redirect(url_for('login'))
+    return redirect(url_for('test', activity=10))
 
 
 # Login Page Render
@@ -94,17 +95,15 @@ def manage_course():
 def course(course_code):
     print(course_code)
     students = class_members(course_code)
-    announcements = Announcement.query.filter_by(
-        course_id=get_course_id(course_code)).all()
-    materials = Material.query.filter_by(
-        course_id=get_course_id(course_code)).all()
-
+    announcements = Announcement.query.filter_by(course_id=get_course_id(course_code)).all()
+    materials = Material.query.filter_by(course_id=get_course_id(course_code)).all()
+    activities = Activity.query.filter_by(course_id=get_course_id(course_code)).all()
     num_students = len(students)
 
     if session['acc_type'] == "student":
-        return render_template('cr_student.html', students=students, announcements=announcements, course_code=course_code, num_students=num_students, materials=materials)
+        return render_template('cr_student.html', students=students, announcements=announcements, course_code=course_code, num_students=num_students, materials=materials, activities=activities)
     else:
-        return render_template('cr_teacher.html', students=students, announcements=announcements, course_code=course_code, num_students=num_students, materials=materials)
+        return render_template('cr_teacher.html', students=students, announcements=announcements, course_code=course_code, num_students=num_students, materials=materials, activities=activities)
 
 
 # Create Course Handler
@@ -146,7 +145,7 @@ def add_member():
 
 
 # Create Learning Material Render
-@app.route('/manage-course/course/<course_code>/material/create')
+@app.route('/course/<course_code>/material/create')
 def material(course_code):
     print(f'COURSE CODE: {course_code}')
     return render_template('add_material.html', course_code=course_code)
@@ -168,7 +167,7 @@ def create_material(course_code):
 
 
 # Read Learning Material Render
-@app.route('/manage-course/course/<course_code>/material/view/<material_id>', methods=['POST'])
+@app.route('/course/<course_code>/material/view/<material_id>', methods=['POST'])
 def read_material(course_code, material_id):
     material = Material.query.filter_by(id=material_id).first()
     return render_template('read_material.html', material=material)
@@ -188,18 +187,19 @@ def create_announcement(course_code):
     return render_template('cr_teacher.html', message='Successfully posted an announcement')
 
 
-# Create Activity Page
-@app.route('/manage-course/course/<course_code>/create-activity/')
+# Create Activity Page Render
+@app.route('/course/<course_code>/create-activity/')
 def activity(course_code):
-    Question.query.delete()
+    # Erases the data when activity page is load (temporary code)
     Choice.query.delete()
+    Question.query.delete()
     Activity.query.delete()
     db.session.commit()
     return render_template('add_activity.html', course_code=course_code)
 
 
 # Create Activity Handler
-@app.route('/manage-course/course/<course_code>/create-activity/create', methods=['POST'])
+@app.route('/course/<course_code>/create-activity/create', methods=['POST'])
 def add_activity(course_code):
     question = request.form.getlist('question[]')
     question_type = request.form.getlist('type[]')
@@ -228,17 +228,40 @@ def add_activity(course_code):
         for j in range(len(choices)):
             ques = Question.query.filter_by(
                 activity_id=activity.id).filter_by(question_number=i).first()
-            choice_list.append(Choice(ques.question_number, choices[i - 1]))
+            choice_list.append(Choice(ques.id, choices[0]))
+            choices.pop(0)
     db.session.bulk_save_objects(choice_list)
     db.session.commit()
 
     return render_template('add_activity.html', course_code=course_code, message="Success!")
 
 
+# Activity Page Render
+@app.route('/course/<course_code>/activity/<activity_id>/<question_number>')
+def perform_activity(course_code, activity_id, question_number):
+    question = Question.query.filter_by(activity_id=activity_id).filter_by(question_number=question_number).first()
+    choice = Choice.query.filter_by(question_id=question.id).all()
+    return render_template('activity.html', course_code=course_code, activity_id=activity_id, question=question, choice=choice)
+
+
 # TEST PAGE
-@app.route('/test')
-def test():
-    return render_template("base.html")
+@app.route('/test/<activity>')
+def test(activity):
+    questions = Question.query.filter_by(activity_id=activity).all()
+    choice_li = []
+    for question in questions:
+        li = []
+        choices = Choice.query.filter_by(question_id=question.id).all()
+        li.append(question.answer)
+        for choice in choices:
+            li.append(choice.item)
+        shuffle(li)
+        choice_li.append(str(li).replace("[", "").replace("]", ""))
+    
+    print(choice_li)
+    print(choice_li[0])
+
+    return render_template("activity.html", questions=questions, choice=choice_li)
 
 
 # TEST
