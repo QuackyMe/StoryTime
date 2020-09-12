@@ -261,13 +261,24 @@ def test(activity):
     print(choice_li)
     print(choice_li[0])
 
-    return render_template("activity.html", questions=questions, choice=choice_li)
+    return render_template("activity.jinja", questions=questions, choice=choice_li, activity=activity)
 
 
 # TEST
-@app.route('/test/result', methods=['POST'])
-def test_page():
-    li = request.form.getlist('test[]')
-    for item in li:
-        print(item)
-    return str(li)
+@app.route('/test/<activity>/result', methods=['POST'])
+def test_grade(activity):
+    score = request.form['score']
+    return score
+
+
+# TEST HIDDEN
+@app.route('/hidden/')
+def hidden():
+    return render_template('hidden.html')
+
+
+# TEST HIDDEN
+@app.route('/hidden/submit', methods=['POST'])
+def hidden_process():
+    message = request.form['hidden']
+    return message

@@ -15,7 +15,11 @@
     </div>
     <button id="previous">Previous Question</button>
     <button id="next">Next Question</button>
+
+    <form action="{{ url_for('test_grade', activity=activity) }}" method="POST">
     <button id="submit">Submit Quiz</button>
+    </form>
+
     <div id="results"></div>
 
     <script>
@@ -27,8 +31,8 @@
             ],
             correctAnswer: "{{ question.answer }}"
         },
-        {% endfor %}
-    ];
+        {% endfor %}    
+        ];
     </script>
     <script src="{{ url_for('static', filename='scripts/activity.js') }}"></script>
     

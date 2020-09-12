@@ -71,8 +71,19 @@ console.log('test');
             }
         });
 
+        // submit form
+        const form = document.querySelector('form');
+        
+        const score = document.createElement('input');
+        score.setAttribute("type", "hidden");
+        score.setAttribute("value", numCorrect);
+        score.setAttribute("name", "score");
+
+        form.append(score);
+        form.submit();
+
         // show number of correct answers out of total
-        resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+        // resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
     }
 
     function showSlide(n) {
@@ -107,26 +118,6 @@ console.log('test');
     const quizContainer = document.getElementById('quiz');
     const resultsContainer = document.getElementById('results');
     const submitButton = document.getElementById('submit');
-        //,
-        // {
-        //     question: "Which one of these is a JavaScript package manager?",
-        //     answers: [
-        //         "Node.js",
-        //         "TypeScript",
-        //         "npm"
-        //     ],
-        //     correctAnswer: "npm"
-        // },
-        // {
-        //     question: "Which tool can you use to ensure code quality?",
-        //     answers: [
-        //         "Angular",
-        //         "jQuery",
-        //         "RequireJS",
-        //         "ESLint"
-        //     ],
-        //     correctAnswer: "ESLint"
-        // }
 
     // Kick things off
     buildQuiz();
