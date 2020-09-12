@@ -21,6 +21,32 @@ class Account(db.Model):
         Type: {self.type}"""
 
 
+class Activity(db.Model):
+    __tablename__ = 'Activity'
+    id = db.Column(db.Integer, primary_key=True)
+    course_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+    deadline = db.Column(db.DateTime, nullable=True)
+
+    def __init__(self, course_id, deadline):
+        self.course_id = course_id
+        self.deadline = deadline
+
+
+class Announcement(db.Model):
+    __tablename__ = 'Announcement'
+    id = db.Column(db.Integer, primary_key=True)
+    course_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
+    title = db.Column(db.String(90), nullable=False)
+    message = db.Column(db.String(300))
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __init__(self, course_id, title, message):
+        self.course_id = course_id
+        self.title = title
+        self.message = message
+
+
 class Course(db.Model):
     __tablename__ = 'Course'
     id = db.Column(db.Integer, primary_key=True)
@@ -41,29 +67,29 @@ class Course(db.Model):
         code: {self.code}"""
 
 
-class Member(db.Model):
-    __tablename__ = 'Member'
+class Choice(db.Model):
+    __tablename__ = 'Choice'
     id = db.Column(db.Integer, primary_key=True)
-    member_id = db.Column(db.Integer, db.ForeignKey('Account.id'))
-    course_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
+    question_id = db.Column(db.Integer, db.ForeignKey(
+        'Question.id'), nullable=False)
+    item = db.Column(db.String(100), nullable=False)
 
-    def __init__(self, member_id, course_id):
-        self.member_id = member_id
-        self.course_id = course_id
+    def __init__(self, question_id, item):
+        self.question_id = question_id
+        self.item = item
 
 
-class Announcement(db.Model):
-    __tablename__ = 'Announcement'
+class Grade(db.Model):
+    __tablename__ = 'Grade'
     id = db.Column(db.Integer, primary_key=True)
-    course_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
-    title = db.Column(db.String(90), nullable=False)
-    message = db.Column(db.String(300))
+    account_id = db.Column(db.Integer, db.ForeignKey('Account.id'))
+    activity_id = db.Column(db.Integer, db.ForeignKey('Activity.id'))
     date = db.Column(db.DateTime, default=datetime.utcnow)
+    grade = db.Column(db.String(5))
 
-    def __init__(self, course_id, title, message):
-        self.course_id = course_id
-        self.title = title
-        self.message = message
+    def __init__(self, activity_id, grade):
+        self.activity_id = activity_id
+        self.grade = grade
 
 
 class Material(db.Model):
@@ -80,30 +106,15 @@ class Material(db.Model):
         self.content = content
 
 
-class Activity(db.Model):
-    __tablename__ = 'Activity'
+class Member(db.Model):
+    __tablename__ = 'Member'
     id = db.Column(db.Integer, primary_key=True)
+    member_id = db.Column(db.Integer, db.ForeignKey('Account.id'))
     course_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
-    date = db.Column(db.DateTime, default=datetime.utcnow)
-    deadline = db.Column(db.DateTime, nullable=True)
 
-    def __init__(self, course_id, deadline):
+    def __init__(self, member_id, course_id):
+        self.member_id = member_id
         self.course_id = course_id
-        self.deadline = deadline
-
-
-class Grade(db.Model):
-    __tablename__ = 'Grade'
-    id = db.Column(db.Integer, primary_key=True)
-    course_id = db.Column(db.Integer, db.ForeignKey('Course.id'))
-    activity_id = db.Column(db.Integer, db.ForeignKey('Activity.id'))
-    date = db.Column(db.DateTime, default=datetime.utcnow)
-    grade = db.Column(db.String(5))
-
-    def __init__(self, course_id, activity_id, grade):
-        self.course_id = course_id
-        self.activity_id = activity_id
-        self.grade = grade
 
 
 class Question(db.Model):
@@ -121,14 +132,3 @@ class Question(db.Model):
         self.type = type
         self.ques = ques
         self.answer = answer
-
-
-class Choice(db.Model):
-    __tablename__ = 'Choice'
-    id = db.Column(db.Integer, primary_key=True)
-    question_id = db.Column(db.Integer, db.ForeignKey('Question.id'), nullable=False)
-    item = db.Column(db.String(100), nullable=False)
-
-    def __init__(self, question_id, item):
-        self.question_id = question_id
-        self.item = item

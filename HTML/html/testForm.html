@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    body{
+        text-align: center;
+    }
+    .title {
+        color: green;
+    }
+    </style>
+</head>
+<body>
+    <h1 class="title">GeeksforGreeks</h1>
+    <p>Click on the button to create a form dynamically</p>
+    <button>Click Here</button>
+
+    <script>
+    const button = document.querySelector("button");
+    button.addEventListener("click", showForm);
+
+    function showForm() {
+
+        var form = document.createElement("form");
+        form.setAttribute("method", "POST");
+        form.setAttribute("action", "testSuccess.html");
+
+        var ID = document.createElement("input");
+        ID.setAttribute("type", "text");
+        ID.setAttribute("name", "id");
+        ID.setAttribute("placeholder", "E-Mail ID");
+
+        var password = document.createElement("input");
+        password.setAttribute("type", "password");
+        password.setAttribute("name", "password");
+        password.setAttribute("placeholder", "Password");
+
+        var submit = document.createElement("input");
+        submit.setAttribute("type", "submit");
+        submit.setAttribute("value", "Submit");
+
+        form.append(document.createElement("br"));
+        form.append(ID);
+        form.append(password);
+        form.append(submit);
+
+        document.querySelector("body").append(form);
+    }
+
+    
+    </script>
+</body>
+</html>
