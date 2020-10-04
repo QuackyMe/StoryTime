@@ -88,7 +88,8 @@ class Grade(db.Model):
     date = db.Column(db.DateTime, default=datetime.utcnow)
     grade = db.Column(db.String(5))
 
-    def __init__(self, activity_id, grade):
+    def __init__(self, account_id, activity_id, grade):
+        self.account_id = account_id
         self.activity_id = activity_id
         self.grade = grade
 

@@ -1,0 +1,50 @@
+<html>
+
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles.css') }}">
+	<link href='https://fonts.googleapis.com/css?family=Baloo Bhai' rel='stylesheet'>
+
+<body>
+	<div class="login_title">
+		<h1>Story Time</h1>
+		<h3>Learn the tales</h2>
+	</div>
+	<form action="{{ url_for('login_process') }}" method="POST">
+		<div class="login_frame">
+			<div class="login_background">
+				<h2>Login</h2>
+				<div class="login_panel">
+					<p>Username</p>
+					<input type="text" name="username" placeholder="Enter Username">
+				</div>
+				<div class="login_panel">
+					<p>Password</p>
+					<input type="password" name="password" placeholder="Enter Password">
+				</div>
+				<input type="submit" value="Login"><br>
+			</div>
+			<a href=/register />New here?</a>
+
+			<!--Error Message-->
+			{% if error %}
+			<p class="error">{{ error | safe }}</p>
+			<br>
+			{% endif %}
+
+			<!--Message-->
+			{% if message %}
+			<p class="message">{{ message | safe }}</p>
+			<br>
+			{% endif %}
+
+		</div>
+	</form>
+
+
+	</div>
+
+</body>
+</head>
+
+</html>

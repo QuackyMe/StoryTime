@@ -1,0 +1,7 @@
+SELECT a.id, a.username, g.activity_id, g.grade
+FROM "Member" AS "m"
+LEFT JOIN "Grade" AS "g" 
+ON g.account_id = m.member_id
+INNER JOIN "Account" AS "a"
+ON m.member_id = a.id
+WHERE m.course_id = 1;
