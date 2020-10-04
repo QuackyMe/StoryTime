@@ -6,16 +6,35 @@ var question_num = document.querySelector('#question_num');
 
 form.addEventListener('submit', submit);
 questionSection.addEventListener('click', addChoice);
+questionSection.addEventListener('change', choiceButton);
 questionButton.addEventListener('click', addQuestion);
 
 var counter = 0;
 var choice_counter = 0;
 window.onload = addQuestion();
 
+function choiceButton(e) {
+    let parent = e.target.parentNode.parentNode;
+    let c_button = parent.querySelector("#btn_choice");
+    let type = parent.querySelector("#q_type");
+    let choices = parent.querySelectorAll(".choice_item");
+
+    if(type.value == "stt"){
+        c_button.style.visibility = "hidden";
+        choices.forEach(element => element.remove());
+    }
+    else{
+        c_button.style.visibility = "visible";
+    }
+}
+
+
+
 function addChoice(e) {
     if (e.target.id === 'btn_choice') {
         var newLabel = document.createElement('h2');
         newLabel.appendChild(document.createTextNode('Choice: '));
+        newLabel.className = 'choice_item';
 
         var newInput = document.createElement('input');
         newInput.name = `choice_${String(choice_counter)}`;

@@ -320,6 +320,10 @@
     display: none;
     visibility: hidden;
   }
+
+  .error {
+    color: red;
+  }
   
   #course_code {
     display: flex;
@@ -337,4 +341,20 @@
   #media{
     height: 100px;
     width: 100px;
+  }
+
+  #grade{
+    position: fixed;
+    top: 40%;
+    left: 40%;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 39px;
+    /* or 108% */
+
+    color: #000000;
+
   }

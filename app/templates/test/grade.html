@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+Manage Course
+{% endblock %}
+
+{% block content %}
+    <p id="grade">Well Done! <br>
+        You have scored {{ score }} out of {{ items }}
+    </p>
+
+    {% if error %}
+    <p class="error">{{ message | safe }}</p>
+    {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}
+Course Room
+{% endblock %}
+{% block content %}
+<div class="header">
+    <h1>Classroom</h1>
+</div>
+
+
+<!-- Join Code -->
+<div class="panel">
+    <div class="title">Join Code</div>
+    <h2>{{ course_code }}</h2>
+</div>
+<!-- List of Activities -->
+<div class="panel">
+    <div class="title">
+        <h2>Activities</h2>
+    </div>
+    <!---->
+    <div class="title">
+        On-Going Activities
+    </div>
+    {% for activity in activities %}
+    <div class="data">
+        <div class="details">
+            <h4>{{ activity.id }}</h4>
+        </div>
+        <form action="{{ url_for('perform_activity', course_code=course_code, activity=activity.id) }}">
+            <input type="submit" name="submit" value="Perform">
+        </form>
+        <!-- <div class="item_date">
+            <h6>Due Date: XX/XX/XX 00:00AM</h6>
+        </div> -->
+    </div>
+    {% endfor %}
+    
+    <div class="button_area">
+        <form action="{{ url_for('activity', course_code=course_code) }}">
+            <input type="submit" value="Create an Activity">
+        </form>
+    </div>
+</div>
+
+<!-- List of Students -->
+<div class="panel">
+    <div class="title">
+        <h2>Students</h2>
+    </div>
+
+    {% for student in students %}
+    <div class="data">
+        <div class="details">
+            <h4>{{student.name}}</h4>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Returns Number of Students to Database -->
+    <div class="title_right">
+        <h5>Students: {{num_students}}</h5>
+    </div>
+
+    {% if students|length > 0 %}
+    <div class="button_area">
+        <form action="{{ url_for('grade', course_code=course_code ) }}">
+            <input type="submit" value="View Grades">
+        </form>
+    </div>
+    {% endif %}
+</div>
+
+<!-- List of Announcements -->
+<div class="panel">
+    <div class="title_right">
+    </div>
+    <div class="title">
+        <h2>Announcements</h2>
+    </div>
+    {% for announcement in announcements %}
+    <div class="data">
+        <div class="details">
+            <h4>{{announcement.title}}</h4>
+            <h5>{{announcement.message}}</h5>
+        </div>
+        <!-- <div class="item_date">
+            <h6>Sent: June XX, 00:00AM</h6>
+        </div> -->
+    </div>
+    {% endfor %}
+</div>
+
+<!-- List of Learning Materials -->
+<div class="panel">
+    <div class="title">
+        <h2>Learning Materials</h2>
+    </div>
+    {% for material in materials %}
+    <div class="data">
+        <div class="details">
+            <h4>{{material.title}}</h4>
+        </div>
+        <div class="button">
+            <form action="{{ url_for('read_material', course_code=course_code, material_id=material.id) }}"
+                method="POST">
+                <input type="submit" name="submit" value="View Material">
+            </form>
+        </div>
+        <!-- <div class="item_date">
+            <h6>Sent: June XX, 00:00AM</h6>
+        </div> -->
+    </div>
+    {% endfor %}
+    <div class="button_area">
+        <form action="{{ url_for('material', course_code=course_code ) }}">
+            <input type="submit" value="Create a Learning Material">
+        </form>
+    </div>
+</div>
+
+<!-- Create new Announcement -->
+<div class="panel">
+    <div class="title">
+        <h2>Post an Announement</h2>
+    </div>
+    <form action="{{ url_for('create_announcement', course_code=course_code) }}" method="POST">
+        <h2>Title</h2>
+        <input type="text" name="title" placeholder="Announcement Title">
+        <h2>Message</h2>
+        <input type="text" name="content" placeholder="Announcement">
+        <input type="submit" value="Post an Announcement">
+    </form>
+</div>
+
+{% if message %}
+<div class="panel">
+        <p class="message">{{ message | safe }}</p>
+        <br>
+    </div>
+{% endif %}
+{% endblock %}

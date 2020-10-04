@@ -17,14 +17,14 @@
 		</div>
 		<ul class="navigation">
 			<li>
-				<a href="#"><img src="{{url_for('static', filename='images/house.png')}}" class="invert" name="home"></a>
+				<a href="{{ url_for('manage_course') }}"><img src="{{url_for('static', filename='images/house.png')}}" class="invert" name="home"></a>
 			</li>
 			<li>
 				<a href="#"><img src="{{url_for('static', filename='images/hat.png')}}" name="courses"></a>
 			</li>
-			<li>
+			<!-- <li>
 				<a href="#"><img src="{{url_for('static', filename='images/person.png')}}" class="invert" name="profile"></a>
-			</li>
+			</li> -->
 			<li>
 				<a href="{{ url_for('logout') }}"><img src="{{url_for('static', filename='images/logout.png')}}" class="logout" name="logout"></a>
 			</li>

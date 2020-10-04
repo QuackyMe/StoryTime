@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+Manage Course
+{% endblock %}
+
+{% block content %}
+
+<body>
+    <div class="header">
+        <h1>Add Activity</h1>
+    </div>
+    <form action="{{url_for('add_activity', course_code=course_code) }}" method="POST" id="activity_form">
+        <div id='questions'>
+            <div id="template" class="hidden panel">
+                <!-- Question Text Box -->
+                <h2 id="q_number" class="title">Question #: </h2> <input type="text" name="question[]">
+                <!-- Select Box -->
+                <h2>Type <select name="type[]" id="q_type">
+                        <option value="mc">Multiple Choice</option>
+                        <option value="stt">Speech-to-Text</option>
+                    </select>
+                </h2>
+                <!-- Correct Answer Text Box -->
+                <h2>Correct Answer <input type="text" name="answer[]" id="q_answer"></h2>
+                <!-- Wrong Answer Text Box -->
+                <!-- <h2>Choice: <input type="text" name="choice_#[]" id="q_choice"> -->
+                <button type="button" id="btn_choice" class="choice">Add Choice</button>
+                </h2>
+                <br>
+                <br>
+            </div>
+
+            <button type="button" id="btn_question">Add Question</button> <br>
+            <input id="question_num" name="questionNum" type="hidden" value="0">
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+    {% if message %}
+    <h1>{{ message | safe }}</h1>
+    {% endif %}
+
+
+    <script src="{{ url_for('static', filename='scripts/add_question.js') }}"></script>
+
+{% endblock %}

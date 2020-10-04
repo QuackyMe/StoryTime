@@ -14,6 +14,9 @@ console.log('test');
 
                 // and for each available answer...
                 for (letter in currentQuestion.answers) {
+                    if(currentQuestion.answers.length == 0){
+                        console.log("SPEECH TO TEXT QUESTION");
+                    }
 
                     // ...add an HTML radio button
                     answers.push(
