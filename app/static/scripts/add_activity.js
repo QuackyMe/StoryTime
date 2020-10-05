@@ -26,22 +26,30 @@ function choiceButton(e) {
     else{
         c_button.style.visibility = "visible";
     }
-}
-
-
+} 
 
 function addChoice(e) {
     if (e.target.id === 'btn_choice') {
         var newLabel = document.createElement('h2');
         newLabel.appendChild(document.createTextNode('Choice: '));
-        newLabel.className = 'choice_item';
+        newLabel.className = 'choice_item choice_container';
 
         var newInput = document.createElement('input');
         newInput.name = `choice_${String(choice_counter)}`;
 
-        newLabel.appendChild(newInput)
+        var newButton = document.createElement('span');
+        newButton.className = 'close';
+        newButton.innerHTML = '&times;';
+
+        newLabel.appendChild(newInput);
+        newLabel.appendChild(newButton);
         e.target.parentElement.insertBefore(newLabel, e.target);
+        newButton.addEventListener('click', deleteChoice);
     }
+}
+
+function deleteChoice(e) {
+    e.target.parentNode.remove();
 }
 
 function addQuestion(e) {

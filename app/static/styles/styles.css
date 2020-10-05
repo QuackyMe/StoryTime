@@ -234,6 +234,25 @@
     right: 20px;
     top: 15%;
   }
+
+  .choice_container {
+    position: relative;
+  }
+
+  .close {
+    font-size: 30px;
+    position: absolute;
+    cursor: pointer;
+    top: -8px;
+    right: -3px;
+    padding: 3px 9px;
+    border-radius: 25px;
+  }
+  
+  .close:hover {
+    background: black;
+    color: #f2c94c;
+  }
   
   .data {
     position: relative;
@@ -294,20 +313,6 @@
     width: fit-content;
     bottom: 0px;
     right: 0px;
-  }
-  
-  .data .close {
-    position: absolute;
-    cursor: pointer;
-    top: -8px;
-    right: -3px;
-    padding: 3px 9px;
-    border-radius: 25px;
-  }
-  
-  .data .close:hover {
-    background: black;
-    color: #f2c94c;
   }
 
   .button_area{
